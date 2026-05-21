@@ -18,7 +18,7 @@ tags:
 ```md
 ## about
 
-這是一個用來生成像是https://youtu.be/_QIAj-xiWpo影片的工具
+這是一個用來生成像是https://youtu.be/_QIAj-xiWpo這種影片的工具
 
 ## structure
 
@@ -50,9 +50,10 @@ Musics2Video:
 
 第二版：
 ```md
-# Musics2Video草圖
 ## about
-這是一個用來生成像是[這種](https://youtu.be/_QIAj-xiWpo)影片的工具
+
+這是一個用來生成像是https://youtu.be/_QIAj-xiWpo這種影片的工具
+
 ## structure
 
 Musics2Video:
