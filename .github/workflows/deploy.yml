@@ -1,0 +1,52 @@
+name: Hexo Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  security-events: write
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+        
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          fetch-depth: 0
+          
+      - name: Gitleaks
+        uses: gitleaks/gitleaks-action@v2.3.9
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Hexo
+        run: |
+          npx hexo clean
+          npx hexo generate
+
+      - name: Disable Jekyll
+        run: touch public/.nojekyll
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          force_orphan: true
