@@ -14,6 +14,7 @@ tags:
 
 ## 2. 專案草圖
 `date: 2026/5/21`
+第一版：
 ```md
 ## about
 
@@ -44,20 +45,44 @@ Musics2Video:
 - yt-dlp
 - ffmpeg
 - tqdm
-
-## job handle
-`__main__`：讓使用者可以在cmd運行 `musics2video arg1 arg2......`
-
-`configs.py`：提供`m2v_config`類別
-
-`download.py`：給予一堆video link下載音訊(停用logging輸出)和記錄下歌名，如果過長則擷取一部分然後在後面加上`......`
-
-`templats.py`：提供多種模板函式，每個模板接受`cover_img、list[song_nams]`，生成一張通用圖片，並回傳每個歌名在圖片的位置等等
-
-`generate_pictures.py`：根據templats.py生成的圖片和其他參數(高亮歌名、箭頭標示現在歌名)，生成每一首歌的封面
-
-`merge.py`：把所有封面圖和音訊合成
-
-`m2v.py`：高層級api，會根據`m2v_config`建立一個叫`m2v`的class，會有各種功能，包括自定義輸出檔名，用本地影片、音訊而不從yt下載的模式，自訂temp資料夾名稱，是否即時輸出logging(進度條、完成提示等等)，基本的音訊品質等等還有很多
 ```
+我想了一下覺得pillow做模板雖然簡單但沒什麼彈性，所以我想或許可以用html+css渲染成圖片，這樣未來有人想貢獻模板難度也會低很多。
 
+第二版：
+```md
+# Musics2Video草圖
+## about
+這是一個用來生成像是[這種](https://youtu.be/_QIAj-xiWpo)影片的工具
+## structure
+
+Musics2Video:
+    各種文件,測試
+    musics2video:
+        __main__
+        __init__
+        m2v.py
+        configs.py
+        
+        renderer:
+            __init__
+            html2image_renderer.py
+            
+        video_utils:
+            __init__
+            merge.py
+            download.py
+            generate_img.py
+            
+        templates:
+            包含多種主題，這邊只舉一種
+            classic:
+                template.html
+                style.css
+                  
+## dependency 
+- html2image
+- Jinja2
+- yt-dlp
+- ffmpeg
+- tqdm
+```
