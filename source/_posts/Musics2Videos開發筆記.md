@@ -120,7 +120,7 @@ Directory structure:
  configs.py在開發過程中會持續新增需求
  
  ### download.py
- ```py
+ ```python
  import os
 import sys
 from tqdm import tqdm
@@ -165,7 +165,7 @@ def download_musics(urls: list[str], config: M2VConfig = M2VConfig()) -> list[tu
  ```
  
 ### get_title.py
-```py
+```python
 import sys
 from urllib.parse import urlparse, parse_qs
 from ytmusicapi import YTMusic
@@ -222,7 +222,7 @@ def get_title(url: str, config: M2VConfig = M2VConfig()) -> str:
         sys.exit(1)
 ```
 ### logger.py
-```py
+```python
 import logging
 from pathlib import Path
 
