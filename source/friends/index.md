@@ -38,3 +38,40 @@ tags:
 </center>
 <br />
 <br />
+
+<center>
+<h2>
+
+[匿名用戶9487](https://qwo877.github.io/me/)
+
+<h2>
+</center>
+
+![avatar](./images/friend3.png)
+
+<center>
+
+被電神電爛的廢物
+
+</center>
+<br />
+<br />
+
+<center>
+<h2>
+
+[Small Z](https://yuzen9622.github.io/)
+
+<h2>
+</center>
+
+![avatar](./images/friend4.png)
+
+<center>
+
+Developer
+
+</center>
+<br />
+<br />
+
