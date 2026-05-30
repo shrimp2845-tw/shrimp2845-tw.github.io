@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <title>project_DES(下) | shrimp2845 の blog</title>
+    <meta name="author" content="shrimp2845" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/user_images/avatar.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>loading...</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>SHRIMP2845 の BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/friends">
+            <i class="fa-solid fa-user-group fa-fw"></i>
+            <span>&ensp;Friends</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;SHRIMP2845 の BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/friends">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-user-group fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Friends</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>project_DES(下)</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/5/20
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h2 id="1-核心程式架構"><a href="#1-核心程式架構" class="headerlink" title="1. 核心程式架構"></a>1. 核心程式架構</h2><p>在<a href="https://shrimp2845-tw.github.io/project_DES_%E4%B8%8A/">project_DES(上)</a>我們討論了DES的核心架構，這邊將概略講解project_DES的核心架構(<a target="_blank" rel="noopener" href="https://github.com/shrimp2845-tw/project_DES/tree/main/project_DES/des_core">des_core</a>)。</p>
+<pre><code>  des_core/
+       ├── __init__.py
+       ├── bit_utils.py
+       ├── crypto.py
+       ├── feistel.py
+       ├── key.py
+       ├── mangler.py
+       └── permute.py
+</code></pre>
+<h3 id="1-資料輸入與初始轉換"><a href="#1-資料輸入與初始轉換" class="headerlink" title="1. 資料輸入與初始轉換"></a>1. 資料輸入與初始轉換</h3><p>​當輸入一個 8 位元組（64 bits）的資料時，<code>bit_utils.bytes_to_bits()</code> 會先把bytes string轉成由 0 和 1 組成的 Python 串列，接著進行<code>crypto.ip()</code> (inverse initial permutation)。</p>
+<h3 id="2-key-schedule"><a href="#2-key-schedule" class="headerlink" title="2. key schedule"></a>2. key schedule</h3><p>與此同時，<code>key.generate_round_key()</code> 會吃進 8 位元組的主密鑰，然後延伸出16組48位元的輪密鑰。</p>
+<h3 id="​3-16-輪的-Feistel-網路"><a href="#​3-16-輪的-Feistel-網路" class="headerlink" title="​3. 16 輪的 Feistel 網路"></a>​3. 16 輪的 Feistel 網路</h3><p>​經過步驟一的 64 位元資料進行:<br><code>output = feistel.feistel(input, 輪密鑰*16, magler.f)</code><br>(若是要加密：<code>輪密鑰*16 = key.generate_round_key(主密鑰)</code>，若是解密：<code>輪密鑰*16 = key.generate_round_key(主密鑰)[::-1]</code>)</p>
+<h3 id="4-末尾置換與輸出"><a href="#4-末尾置換與輸出" class="headerlink" title="4. 末尾置換與輸出"></a>4. 末尾置換與輸出</h3><p>將經過步驟三的資料進行<code>crtpto.fp()</code>(inverse initial permutation)，輸出在用<code>bit_utils.bits_to_bytes()</code>變回bytes string，即是完成加密&#x2F;解密後的資料</p>
+<h2 id="2-高層資料處理和基礎的分組加密模式"><a href="#2-高層資料處理和基礎的分組加密模式" class="headerlink" title="2. 高層資料處理和基礎的分組加密模式"></a>2. 高層資料處理和基礎的分組加密模式</h2><p>這邊將概略講解project_DES的高層架構 (<a target="_blank" rel="noopener" href="https://github.com/shrimp2845-tw/project_DES/tree/main/project_DES">project_DES</a>)和基礎的塊區塊加密模式，畢竟DES演算法只能處理剛好64bit的資料，因此真的要用來加密數據的話，還有一些其他準備要做。<br>(註：接下來的講解僅限於ECB, CBC，一些其他的模式(像是CTR就不需要進行填充也不需要切塊)的整體架構和這兩種有很大差異)</p>
+<h3 id="1-填充和切塊"><a href="#1-填充和切塊" class="headerlink" title="1. 填充和切塊"></a>1. 填充和切塊</h3><p>我實作是用<code>pkcs#5</code>填充，填充的意義是將資料填充成區塊大小(DES是64bit)的倍數大小。</p>
+<p>(註：其實<code>pkcs#5</code>是<code>pkcs#7</code>在區塊大小等於64bit時的特例，算是<code>pkcs#7</code>的子集，所以使用<code>pkcs#7</code>也是一模一樣的效果)</p>
+<p>因為資料真正在處理的單位並不是bit而是byte (8bit)，所以我們要把數據填充成8bytes的倍數，方法並不是填<code>0x00</code>，畢竟如果原資料的最後一個byte也是<code>0x00</code>，就不知道拆除填充時要拆掉幾個byte了，所以填充的資料是：<br><code>bytes(8 - (原資料大小 % 8)) * 8 - (原資料大小 % 8)</code></p>
+<p>(註： 有一個特例是如果(原資料大小 % 8) &#x3D; 0，那必須改成填充<code>0x08</code>*8而不是不填充)</p>
+<p>如果是加密將這串資料加在檔案的尾端即可，如果是解密則不需要這個步驟。</p>
+<p>再來要把資料切成好幾塊和區塊大小等大的多個區塊，然後儲存成Python list。</p>
+<h3 id="2-加密-解密"><a href="#2-加密-解密" class="headerlink" title="2.加密&#x2F;解密"></a>2.加密&#x2F;解密</h3><p>再來用選擇的模式進行加密或解密，這次的實作我只有設計ECB和CBC。</p>
+<h4 id="ECB-Electronic-Codebook"><a href="#ECB-Electronic-Codebook" class="headerlink" title="ECB (Electronic Codebook)"></a>ECB (Electronic Codebook)</h4><p><img src="/./images/ecb_e.png"><br><img src="/./images/ecb_d.png"><br>ECB就是最基本的將每個區塊直接用DES進行加密&#x2F;解密輸出。<br>缺點也同樣的明顯，如果有兩個區塊一模一樣，就會被加密成一模一樣的東西，所以在重複性高的資料就很容易暴露統計特徵，而且只要是一樣的資料就一定會被加密成一樣的東西，例如「夢幻之星線上：藍色脈衝」線上電子遊戲使用ECB模式的Blowfish密碼。作弊者通過重複傳送加密的「殺死怪物」訊息包以非法的快速增加經驗值。</p>
+<h4 id="CBC-Cipher-Block-Chaining"><a href="#CBC-Cipher-Block-Chaining" class="headerlink" title="CBC (Cipher Block Chaining)"></a>CBC (Cipher Block Chaining)</h4><p><img src="/./images/cbc_e.png"><br><img src="/./images/cbc_d.png"><br>而CBC每個明文塊先與前一個密文塊進行互斥或後，再進行加密。在這種方法中，每個密文塊都依賴於它前面的所有明文塊。同時，為了保證每條訊息的唯一性，在第一個塊中需要使用<code>iv</code>(initialize vector)。<br>缺點是因為加密時處理每個區塊都要求前一個區塊已經處理完畢，所以導致加密過程無法多核心並行(就不能用gpu加速加密過程)。</p>
+<h3 id="3-合成和去除填充"><a href="#3-合成和去除填充" class="headerlink" title="3.合成和去除填充"></a>3.合成和去除填充</h3><p>再來就把加密&#x2F;解密過後的多個資料塊組合成一整個，如果是解密的話，就還要去除填充，而方法就是在資料尾部移除資料最後一個byte個bytes。<br>(註：移除時也要檢查填充是否合法，不合法大概率是密鑰錯了)</p>
+<p>處理完的資料就是加密&#x2F;解密過後過的資料了。</p>
+<h2 id="3-結尾"><a href="#3-結尾" class="headerlink" title="3.結尾"></a>3.結尾</h2><p>​這些就是用DES加密資料的完整流程了，不知道講解的夠不夠清楚，開發這個專案讓我也學到不少，像是基礎的密碼學知識和開發python module的流程等等，這也是我第一次完整的寫出一個能讓別人用的module，當下成功<code>pip install project-des</code>的時候真的蠻感動的w，之後應該會寫怎麼部署&#x2F;發布自己的模組到pypi上的教學，那就敬請期待囉。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2026 - 2026 shrimp2845 の blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;shrimp2845
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

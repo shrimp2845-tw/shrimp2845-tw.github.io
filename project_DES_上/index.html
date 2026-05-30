@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <title>project_DES(上) | shrimp2845 の blog</title>
+    <meta name="author" content="shrimp2845" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/user_images/avatar.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>loading...</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>SHRIMP2845 の BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/friends">
+            <i class="fa-solid fa-user-group fa-fw"></i>
+            <span>&ensp;Friends</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;SHRIMP2845 の BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/friends">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-user-group fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Friends</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>project_DES(上)</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/5/20
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h2 id="1-動機"><a href="#1-動機" class="headerlink" title="1.動機"></a>1.動機</h2><p>高一那年算是我第一次對密碼學有興趣，也花了一兩天的時間用python復刻二戰時期德國的加密機器<a target="_blank" rel="noopener" href="https://github.com/shrimp2845-tw/Enigma">恩格瑪機</a>，而在完成這份專案後我開始好奇，現代的加密是怎麼樣的呢?畢竟不可能像古典密碼學那樣針對英文字母做加解密，在探索的過程中，我發現了現代對稱加密的先驅:<strong>DES</strong>演算法。</p>
+<h2 id="2-歷史"><a href="#2-歷史" class="headerlink" title="2.歷史"></a>2.歷史</h2><p><strong>DES</strong> (Data Encryption Standard)是一種是一種對稱金鑰加密塊密碼演算法，1976年被美國聯邦政府的國家標準局確定為聯邦資料處理標準，隨後在國際上廣泛流傳開來。</p>
+<p>雖然隨著運算能力提升，DES 的 56 位元金鑰變得能被暴力破解(使用RTX3070進行加速的話大約需要215天，如果是特殊設計的機器不下幾個小時就能破解 (<a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/357937815_Key_lengths_revisited_GPU-based_brute_force_cryptanalysis_of_DES_3DES_and_PRESENT">source</a>))，但是作為第一個公開的對稱加密算法，吸引了很多嘗試破解、弄清楚國安局有沒有暗藏後門的各路人士開始加入密碼學的研究，而隨後替代他的<strong>AES</strong> (Advance Encryption Standard)演算法，在設計中也相當程度的參考了DES，實際上後來出現的一系列其他的對稱加密算法，或多或少都借鏡了DES，因此，DES在現代密碼學的意義，其實早就超出了算法本身。</p>
+<h2 id="3-演算法邏輯"><a href="#3-演算法邏輯" class="headerlink" title="3.演算法邏輯"></a>3.演算法邏輯</h2><p>我在理解原理的方面是看<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=8l9xAvuGJFo&list=PLBlnK6fEyqRiOCCDSdi6Ok_8PU2f_nkuf">Neso Academy-Data Encryption Standard(DES)</a>的一系列教學影片學習的，這裡我會試著用我的話來講解清楚。</p>
+<h3 id="1-Feistel-Structure"><a href="#1-Feistel-Structure" class="headerlink" title="1. Feistel Structure"></a>1. Feistel Structure</h3><p>Feistel Structure 是一種用於構建對稱區塊加密算法的結構，其演算邏輯如圖:</p>
+<p><img src="/./images/feistel.png" alt="feistel"></p>
+<p>(註:實際上Feistel Structure並沒有硬性規定輪數，但這裡使用官方文檔和為了解說方便圖中的是DES所使用的16輪)</p>
+<p><code>L0, R0</code>: 將input 拆分成等長的左右兩部分</p>
+<p><code>K1 ~ K16</code>: 輪密鑰，每個都是固定長度的不同資料</p>
+<p><code>f()</code>: 輪函數，<code>f(input, round_key) = output</code>，input 和 output長度相同</p>
+<p><code>Ꚛ</code>: 異或運算(xor)</p>
+<p>仔細觀察就可以發現這種設計的巧妙之處:</p>
+<p><code>plain = feistel(input=feistel(input=plain, round_keys=K1~K16), round_keys=K16~K1)</code></p>
+<p>因此加解密使用同一套算法不過<code>round_keys</code>順序相反罷了，所以即使<code>f()</code>不可逆，整體算法仍然可逆。</p>
+<h3 id="2-Mangler-Function"><a href="#2-Mangler-Function" class="headerlink" title="2. Mangler Function"></a>2. Mangler Function</h3><p>Mangler Function 是DES所採用的輪函數，其概略演算邏輯如圖:</p>
+<p><img src="/./images/mangler.png"></p>
+<p>以下是拆分成各個步驟的解釋:</p>
+<h4 id="1-expand-permutation-ep"><a href="#1-expand-permutation-ep" class="headerlink" title="1. expand permutation (ep)"></a>1. expand permutation (ep)</h4><p><code>ep()</code>會將32bit的輸入，擴展成48bit的輸出，其運作邏輯如下:</p>
+<p><img src="/./images/ep.png"></p>
+<p>將原資料用上表的索引填入(例如:<code> output[1] = input[32], output[2] = input[1], output[15] = input[10]</code>)，嘿對，就是這麼樸實無華。</p>
+<h4 id="2-xor"><a href="#2-xor" class="headerlink" title="2. xor"></a>2. xor</h4><p>接著和48bit的輪密鑰(接下來會討論輪密鑰的生成)進行異或運算。</p>
+<h4 id="3-s-box"><a href="#3-s-box" class="headerlink" title="3. s-box"></a>3. s-box</h4><p><code>s-box()</code>會將48bit的數據變回32bit，同時這是整個算法唯一的非線性運算，可以說是整個演算法在統計上不會完全崩塌的重大功臣。</p>
+<p>首先，輸入會被拆成8個6bit的資料，我們叫它們<code>d1 ~ d8</code>，而<code>s-box()</code>也由8個小函式<code>s1() ~ s8()</code>組成，每個<code>si()</code>接收6bit並且輸出4bit的資料，整體流程就是:</p>
+<p><code>output = s-box(input) = s1(d1)|s2(d2)|......|s7(d7)|s8(d8)</code></p>
+<p><code>si</code>的運作邏輯如下:</p>
+<p><img src="/./images/sbox.png"></p>
+<p>每個<code>di</code>都是6bit，因此我們把它拆成<code>di = b1 b2 b3 b4 b5 b6</code></p>
+<p>接著，<code>b1 b6</code>當縱軸，<code>b2 b3 b4 b5</code>當橫軸，拿去查表(上圖是<code>s1()</code>的表，每個<code>si()</code>都有自己的表)，查到的值就是輸出。</p>
+<h4 id="4-p-box"><a href="#4-p-box" class="headerlink" title="4. p-box"></a>4. p-box</h4><p><code>p-box()</code>會將32bit的輸入，查表打亂，其運作邏輯如下:</p>
+<p><img src="/./images/pbox.png"></p>
+<p>將原資料用上表的索引填入(例如: <code>output[1] = input[16], output[2] = input[7], output[15] = input[31]</code>)</p>
+<h3 id="3-Key-Schedule"><a href="#3-Key-Schedule" class="headerlink" title="3. Key Schedule"></a>3. Key Schedule</h3><p>再來我們要來探討這16輪的輪密鑰是如何產生的，其概略演算邏輯如圖:</p>
+<p><img src="/./images/key.png"></p>
+<h4 id="1-permuted-choice-1-pc1"><a href="#1-permuted-choice-1-pc1" class="headerlink" title="1. permuted choice 1 (pc1)"></a>1. permuted choice 1 (pc1)</h4><p><code>pc1()</code>會將64bit的<code>key</code>(演算法使用的密鑰)，變成兩個28bit的<code>C0</code>, <code>D0</code>，</p>
+<p>其中，8的倍數bit會被捨棄，這也是為什麼DES的密鑰真實長度是56bit而不是64bit，其運作邏輯如下:</p>
+<p><img src="/./images/pc1.png"></p>
+<p>將原資料用上表的索引填入，上半部分是<code>C0</code>，下半部分是 <code>D0</code>。</p>
+<h4 id="2-left-shifts-lcs"><a href="#2-left-shifts-lcs" class="headerlink" title="2. left shifts (lcs)"></a>2. left shifts (lcs)</h4><p><code>lcs()</code>是將原本<code>b1 b2 ...... b27 b28</code> 變成 <code>b2 b3 ...... b28 b1</code>的這個操作根據現在的回合重複指定次數，其中除了第1, 2, 9, 16輪做1次以外，其餘輪數都做2次。</p>
+<h4 id="3-permuted-choice-2-pc2"><a href="#3-permuted-choice-2-pc2" class="headerlink" title="3. permuted choice 2 (pc2)"></a>3. permuted choice 2 (pc2)</h4><p><code>pc2()</code>會將56bit的資料(<code>C0 | D0</code>)變成48bit的輪密鑰，其運作邏輯如下:</p>
+<p><img src="/./images/pc2.png"></p>
+<p>將原資料用上表的索引填入(例如: <code>output[1] = input[14], output[2] = input[17], output[15] = input[12]</code>)</p>
+<h3 id="4-Final-Step"><a href="#4-Final-Step" class="headerlink" title="4. Final Step!"></a>4. Final Step!</h3><p>最後將上述的零件組起來就好了，其運作邏輯如下:</p>
+<p><img src="/./images/DES.png"></p>
+<p>其中將<code>round_keys</code>反序就是解密。</p>
+<h4 id="1-initial-permutation-ip"><a href="#1-initial-permutation-ip" class="headerlink" title="1. initial permutation (ip)"></a>1. initial permutation (ip)</h4><p><code>ip()</code>會將64bit的輸入，查表打亂，其運作邏輯如下:</p>
+<p><img src="/./images/ip.png"></p>
+<p>將原資料用上表的索引填入(例如: <code>output[1] = input[58], output[2] = input[50], output[15] = input[12]</code>)</p>
+<h4 id="2-inverse-initial-permutation-inv-ip"><a href="#2-inverse-initial-permutation-inv-ip" class="headerlink" title="2. inverse initial permutation (inv_ip)"></a>2. inverse initial permutation (inv_ip)</h4><p><code>inv_ip</code>是<code>ip()</code>的逆向操作(<code>input = inv_ip(ip(input))</code>)，其運作邏輯如下:</p>
+<p><img src="/./images/iip.png"></p>
+<p>將原資料用上表的索引填入(例如: <code>output[1] = input[40], output[2] = input[8], output[15] = input[63]</code>)</p>
+<h2 id="4-結尾"><a href="#4-結尾" class="headerlink" title="4.結尾"></a>4.結尾</h2><p>這些就是DES的運作邏輯了，不過這個樣子還不能真的加密資料，你會發現現在的演算法只能接受64bit的資料，但真正加密的資料可不是固定大小的，所以下一篇我們會討論要怎麼真的用DES進行加密，那就敬請期待囉。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2026 - 2026 shrimp2845 の blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;shrimp2845
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
