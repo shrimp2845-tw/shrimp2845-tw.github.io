@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shrimp2845-tw.github.io/sitemap.xml
