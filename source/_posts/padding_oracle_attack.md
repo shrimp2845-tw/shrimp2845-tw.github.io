@@ -187,12 +187,12 @@ if __name__ == '__main__':
  
  `get_encrypted_secret()`： 回傳加密後的密文。
  
- ``check_your_secret(ct)`：
+ `check_your_secret(ct)`：
  這是整個攻擊的oracle。當我們傳入構造的密文時，它會進行解密。如果填充錯誤，會拋出錯誤訊息。
  
-### 2.攻擊函數
+### 2.攻擊函數​
 
-​`check_padding_len(r, c)`：
+`check_padding_len(r, c)`：
 
 確認當前的填充長度，​當我們構造出一個合法的 `R` 讓解密成功時，去探測此時的明文末尾到底是 `01`、`02 02`還是 `03 03 03`。
 
