@@ -35,6 +35,10 @@ function fallbackProject(repo, cached) {
     };
 }
 
+function hasCachedProject(cached) {
+    return Boolean(cached && cached.full_name && cached.name && cached.html_url);
+}
+
 async function readCache() {
     try {
         return JSON.parse(await fs.readFile(CACHE_FILE, "utf8"));
@@ -86,8 +90,9 @@ hexo.extend.filter.register("before_generate", async function () {
 
         if (
             !process.env.PROFOLIO_REFRESH &&
-            cached &&
-            (now - cached.updated_at < CACHE_TTL || now < (cached.rate_limited_until || 0))
+            hasCachedProject(cached) &&
+            (now - cached.updated_at < CACHE_TTL ||
+                (!process.env.GITHUB_TOKEN && now < (cached.rate_limited_until || 0)))
         ) {
             resolved.push(fallbackProject(repo, cached));
             continue;
