@@ -182,27 +182,28 @@ def main():
 if __name__ == '__main__':
     main()
  ```
- ### 1. 漏洞環境模擬
-`VulnerableAES()` 模擬一個真實世界中具有漏洞的 Web API 或服務。
+### 1.VulnerableAES()
+模擬一個真實世界中具有漏洞的 Web API 或服務。
  
- **​get_encrypted_secret()**： 回傳加密後的密文。
+ `get_encrypted_secret()`： 回傳加密後的密文。
  
- **​check_your_secret(ct)**：
+ ``check_your_secret(ct)`：
  這是整個攻擊的oracle。當我們傳入構造的密文時，它會進行解密。如果填充錯誤，會拋出錯誤訊息。
  
 ### 2.攻擊函數
-​**check_padding_len(r, c)**：
+
+​`check_padding_len(r, c)`：
 
 確認當前的填充長度，​當我們構造出一個合法的 `R` 讓解密成功時，去探測此時的明文末尾到底是 `01`、`02 02`還是 `03 03 03`。
 
-**find_valid_padding(r, c, idx)**：
+`find_valid_padding(r, c, idx)`：
 
 這個函數負責動態調整 `R`
 
 已知前一個狀態的填充長度為 `idx`  (例如末尾已經是 `01`)，為了猜測前一個 byte，把末尾調整為期待的下一個填充值(例如 `02 02`)。
 接著，程式針對未知的第 16 - idx 個位置，從 0 到 255 進行爆破，直到oracle不報錯為止。
 
-**attack_block(block, iv)**：
+`attack_block(block, iv)`：
 
 這個函數負責對單個密文區塊進行破解。
 
