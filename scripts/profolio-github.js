@@ -31,6 +31,7 @@ function fallbackProject(repo, cached) {
         language: cached && cached.language,
         stargazers_count: cached && cached.stargazers_count,
         readme_html: cached && cached.readme_html ? cached.readme_html : "",
+        readme_markdown: cached && cached.readme_markdown ? cached.readme_markdown : "",
         readme_error: cached && cached.readme_error ? cached.readme_error : "This project does not have a README.md.",
     };
 }
@@ -101,12 +102,12 @@ hexo.extend.filter.register("before_generate", async function () {
         try {
             const data = await fetchJson(`https://api.github.com/repos/${repo}`);
             let readmeHtml = "";
+            let readmeMarkdown = "";
             let readmeError = "";
 
             try {
                 const readme = await fetchJson(`https://api.github.com/repos/${repo}/readme`);
-                const markdown = Buffer.from(readme.content, "base64").toString("utf8");
-                readmeHtml = await hexo.render.render({ text: markdown, engine: "md" });
+                readmeMarkdown = Buffer.from(readme.content, "base64").toString("utf8");
             } catch {
                 readmeError = "This project does not have a README.md.";
             }
@@ -120,6 +121,7 @@ hexo.extend.filter.register("before_generate", async function () {
                 language: data.language,
                 stargazers_count: data.stargazers_count,
                 readme_html: readmeHtml,
+                readme_markdown: readmeMarkdown,
                 readme_error: readmeError,
             };
             resolved.push(fallbackProject(repo, cache[repo]));

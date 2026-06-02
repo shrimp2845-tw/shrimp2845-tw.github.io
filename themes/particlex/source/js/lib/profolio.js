@@ -48,8 +48,14 @@ mixins.profolio = {
         },
         selectProfolio(project) {
             this.selectedProfolio = project;
-            this.selectedReadme = project.readme_html || "";
-            this.readmeError = project.readme_error || "";
+            if (project.readme_markdown && window.marked) {
+                marked.use({ breaks: true, gfm: true });
+                this.selectedReadme = marked.parse(project.readme_markdown);
+                this.readmeError = "";
+            } else {
+                this.selectedReadme = project.readme_html || "";
+                this.readmeError = project.readme_error || "";
+            }
             this.readmeLoading = false;
             this.$nextTick(this.render);
         },
