@@ -561,12 +561,135 @@ body::-webkit-scrollbar-track {
 }
 .input:focus {
     background: #fff;
-    border-color: #0969da;
+    border-color: #66afef;
     box-shadow: 0 0 0 3px #0969da4d;
     outline: none;
 }
 .input:hover {
     background: #fff;
+}
+.profolio-detail {
+    background: #fff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    margin-top: 28px;
+    padding: 24px;
+}
+.profolio-detail-head {
+    align-items: flex-start;
+    border-bottom: 1px solid #d0d7de;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+}
+.profolio-detail-head h2 {
+    margin-top: 0;
+}
+.profolio-detail-head p,
+.profolio-project-desc,
+.profolio-status {
+    color: #5c6b72;
+}
+.profolio-detail-actions {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.profolio-detail-head a {
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    color: #1e3e3f;
+    flex-shrink: 0;
+    padding: 10px 14px;
+    transition: background 0.25s, border 0.25s, color 0.25s;
+}
+.profolio-detail-head a:hover,
+.profolio-project.active,
+.profolio-project:hover {
+    background: #eef6ff;
+    border-color: #66afef;
+    opacity: 1;
+}
+.profolio-error {
+    color: #d1242f;
+}
+.profolio-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+.profolio-head {
+    margin-bottom: 12px;
+}
+.profolio-project {
+    align-items: flex-start;
+    background: #fff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    color: #1e3e3f;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: minmax(180px, 0.6fr) minmax(260px, 1.4fr) auto;
+    font: inherit;
+    gap: 18px;
+    min-height: 0;
+    padding: 18px;
+    text-align: left;
+    transition: background 0.25s, border 0.25s, box-shadow 0.25s;
+    width: 100%;
+}
+.profolio-project-title {
+    color: #51a4ed;
+    font-size: 18px;
+    font-weight: bold;
+}
+.profolio-project-desc {
+    line-height: 1.7;
+}
+.profolio-project-meta {
+    align-items: center;
+    color: #6e7781;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-end;
+    min-height: 22px;
+    white-space: nowrap;
+}
+.profolio-readme {
+    margin: 0;
+}
+.profolio-readme p {
+    white-space: pre-wrap;
+}
+.profolio-readme pre,
+.profolio-readme pre code,
+.profolio-readme .code-content,
+.profolio-readme .hljs-ln-code {
+    overflow-wrap: normal;
+    white-space: pre;
+    word-break: normal;
+    word-wrap: normal;
+}
+.profolio-readme pre {
+    overflow: auto;
+}
+.profolio-readme ul,
+.profolio-readme ol {
+    margin-left: 24px;
+}
+.profolio-status {
+    background: #fff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    line-height: 1.7;
+    margin-top: 20px;
+    padding: 18px;
 }
 .into-enter-active {
     transition: opacity 0.5s, transform 0.5s;
@@ -770,8 +893,8 @@ pre {
     border-radius: 15px;
     box-shadow: 0 2px 12px 0 #0000001a;
     margin: 25px 0;
-    overflow: hidden;
-    white-space: normal;
+    overflow: auto;
+    white-space: pre;
 }
 pre,
 code,

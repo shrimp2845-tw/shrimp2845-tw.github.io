@@ -53,4 +53,8 @@
 <% if (type === "index") { %>
 <script src="<%- url_for("/js/lib/home.js") %>"></script>
 <% } %>
-<link rel="stylesheet" href="<%- url_for("/css/main.css") %>" />
+<% if (type === "profolio") { %>
+<script src="https://s4.zstatic.net/ajax/libs/marked/12.0.1/marked.min.js"></script>
+<script src="<%- url_for("/js/lib/profolio.js?v=3") %>"></script>
+<% } %>
+<link rel="stylesheet" href="<%- url_for("/css/main.css?v=2") %>" />

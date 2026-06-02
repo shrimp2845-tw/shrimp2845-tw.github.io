@@ -1,0 +1,72 @@
+<%
+    const projects = config.github_projects || theme.github_projects || [];
+    const projectsJson = JSON.stringify(projects)
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;");
+%>
+<div id="profolio" class="article" data-projects="<%- projectsJson %>">
+    <div class="profolio-head">
+        <h1><%= page.title || "Profolio" %></h1>
+    </div>
+
+    <div class="profolio-status" v-if="profolioLoading">
+        <span class="icon"><i class="fa-solid fa-spinner fa-spin fa-fw"></i></span>
+        Loading GitHub projects...
+    </div>
+    <div class="profolio-status profolio-error" v-else-if="profolioError">
+        <span class="icon"><i class="fa-solid fa-circle-exclamation fa-fw"></i></span>
+        {{ profolioError }}
+    </div>
+    <div class="profolio-status" v-else-if="profolioProjects.length === 0">
+        <span class="icon"><i class="fa-solid fa-folder-open fa-fw"></i></span>
+        Add repositories in <code>/_config.yml</code>.
+    </div>
+
+    <div class="profolio-grid" v-if="profolioProjects.length > 0 && !selectedProfolio">
+        <button
+            v-for="project in profolioProjects"
+            :key="project.full_name"
+            class="profolio-project"
+            type="button"
+            @click="openProfolio(project)"
+        >
+            <span class="profolio-project-title">{{ project.name }}</span>
+            <span class="profolio-project-desc">{{ project.description || "No description on GitHub." }}</span>
+            <span class="profolio-project-meta">
+                <span v-if="project.language">{{ project.language }}</span>
+                <span v-if="project.stargazers_count !== undefined">
+                    <i class="fa-solid fa-star fa-fw"></i>{{ project.stargazers_count }}
+                </span>
+            </span>
+        </button>
+    </div>
+
+    <div class="profolio-detail" v-if="selectedProfolio">
+        <div class="profolio-detail-head">
+            <div>
+                <h2>{{ selectedProfolio.name }}</h2>
+                <p>{{ selectedProfolio.description || "No description on GitHub." }}</p>
+            </div>
+            <div class="profolio-detail-actions">
+                <a :href="selectedProfolio.html_url" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-github fa-fw"></i>
+                    GitHub
+                </a>
+                <a :href="profolioListUrl">
+                    <i class="fa-solid fa-arrow-left fa-fw"></i>
+                    Back
+                </a>
+            </div>
+        </div>
+        <div class="profolio-status" v-if="readmeLoading">
+            <span class="icon"><i class="fa-solid fa-spinner fa-spin fa-fw"></i></span>
+            Loading README...
+        </div>
+        <div class="profolio-status profolio-error" v-else-if="readmeError">
+            <span class="icon"><i class="fa-solid fa-circle-exclamation fa-fw"></i></span>
+            {{ readmeError }}
+        </div>
+        <div class="content profolio-readme" v-else v-html="selectedReadme"></div>
+    </div>
+</div>

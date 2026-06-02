@@ -93,6 +93,13 @@ archive_generator:
 
 theme: particlex
 
+# GitHub projects shown on the /profolio page
+github_projects:
+  - shrimp2845-tw/project_AES
+  - shrimp2845-tw/project_DES
+  - shrimp2845-tw/Musics2Video
+  - shrimp2845-tw/nhdl
+
 # Deployment
 deploy:
   type: git

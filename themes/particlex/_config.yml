@@ -38,6 +38,11 @@ menu:
         name: user-group
         theme: solid
         link: /friends
+    Profolio:
+        name: folder-open
+        theme: solid
+        link: /profolio
+
 # Side info card
 card:
     enable: false
