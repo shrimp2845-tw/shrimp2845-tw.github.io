@@ -1,5 +1,5 @@
 <%
-    const projects = config.github_projects || theme.github_projects || [];
+    const projects = config.github_projects_resolved || [];
     const projectsJson = JSON.stringify(projects)
         .replace(/&/g, "&amp;")
         .replace(/"/g, "&quot;")
