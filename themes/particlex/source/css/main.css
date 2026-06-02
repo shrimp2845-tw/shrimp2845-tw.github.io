@@ -672,7 +672,6 @@ body::-webkit-scrollbar-track {
 .profolio-readme .code-content,
 .profolio-readme .hljs-ln-code {
     overflow-wrap: normal;
-    white-space: pre;
     word-break: normal;
     word-wrap: normal;
 }
