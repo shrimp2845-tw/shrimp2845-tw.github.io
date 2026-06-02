@@ -486,7 +486,7 @@
     font-size: 13px;
     line-height: 2;
     overflow: auto;
-    padding: 50px 30px 20px;
+    padding: 18px 24px;
     white-space: pre;
 }
 .comment iframe,
@@ -893,8 +893,8 @@ pre {
     border-radius: 15px;
     box-shadow: 0 2px 12px 0 #0000001a;
     margin: 25px 0;
-    overflow: auto;
-    white-space: pre;
+    overflow: hidden;
+    white-space: normal;
 }
 pre,
 code,
