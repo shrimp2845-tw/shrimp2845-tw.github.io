@@ -75,3 +75,22 @@ Developer
 <br />
 <br />
 
+<center>
+<h2>
+
+[R3X DJ](https://r3xdj.github.io/)
+
+<h2>
+</center>
+
+![avatar](./images/friend5.png)
+
+<center>
+
+對不起我都在 Vibe Hacking
+
+</center>
+<br />
+<br />
+
+
