@@ -93,4 +93,20 @@ Developer
 <br />
 <br />
 
+<h2>
+
+[Flashingtw](https://flashing.tw/)
+
+<h2>
+</center>
+
+![avatar](./images/friend6.png)
+
+<center>
+
+喜歡研究演算法 熱愛程式的普通高中生
+
+</center>
+<br />
+<br />
 
