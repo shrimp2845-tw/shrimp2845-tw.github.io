@@ -11,7 +11,7 @@ tags:
 
 ### hard
 
-I create my own hash function called "shrimp128" cause most of the hash function are so complicated and hard to understand, can u help me test if it is secure? I'll give u the flag as the reward if u can find a collision out of it!
+I created my own hash function called "shrimp128" cause most hash functions are so complicated and hard to understand, can u help me test if it is secure? I'll give u the flag as a reward if u can find a collision in it!
 
 source code:
 ```py
