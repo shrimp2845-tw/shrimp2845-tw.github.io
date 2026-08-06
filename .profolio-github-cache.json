@@ -1,30 +1,30 @@
 {
   "shrimp2845-tw/project_AES": {
-    "updated_at": 1784853446434,
+    "updated_at": 1785983465786,
     "full_name": "shrimp2845-tw/project_AES",
     "name": "project_AES",
     "description": "A modular Python implementation of AES featuring customizable transformations and comprehensive JSON dataflow logging for cryptographic analysis",
     "html_url": "https://github.com/shrimp2845-tw/project_AES",
     "language": "Python",
-    "stargazers_count": 10,
+    "stargazers_count": 9,
     "readme_html": "",
     "readme_markdown": "**_Warning: This implementation is intended for analysis and educational purpose and should not be used for real-world security._**\n\n## About\n- **Author:** shrimp2845  \n- **Version:** 0.5.0\n- **License:** MIT\n\nA pure Python implementation of the Advanced Encryption Standard (AES) algorithm with support for multiple key sizes, configurable internal transformations, detailed logging, and multiple cipher modes of operation.\n\n## Features\n- AES-128/AES-192/AES-256 support\n- ECB/CBC/CTR modes\n- PKCS#7 padding\n- Custom AES transformation configuration\n- Custom S-Box support\n- Encryption/decryption logging\n\n## Project Structure\n```\n\nproject_AES/\n  ├── __init__.py\n  ├── block_utils.py\n  ├── configs.py\n  ├── project_AES.py\n  └── aes_core/\n      ├── __init__.py\n      ├── cipher.py\n      ├── core_utils.py\n      ├── key_expansion.py\n      ├── math_utils.py\n      └── round.py\n\n```\n\n## Installation\nRequires Python 3.10+\n```bash\npip install project-aes\n```\nor \n\n```bash\npip install tqdm\ngit clone https://github.com/shrimp2845-tw/project_AES.git\ncd project_AES\n```\n\n## Quick Start\n```python\nfrom project_AES import AES\nkey = b\"0123456789abcdef\"\nplaintext = b\"hello world\"\ncipher = AES(key)\nciphertext = cipher.encrypt(plaintext)\nprint(ciphertext)\n```\n\n## Docs\n```\nclass initialize\n----------------------\nfrom project_AES import AES\naes = AES(key, mode='ECB', config=None)\n\nkey -> bytes (16, 24 or 32 bytes)\nRequired. AES key for 128/192/256-bit encryption.\nmode -> str (optional)\nBlock cipher mode of operation.\nSupported: 'ECB', 'CBC', 'CTR'\nDefault: 'ECB'\nconfig -> AESConfig (optional)\nAdvanced configuration. Default is AESConfig()\n\n\nmethods\n----------------------\nencrypt(data: bytes) -> bytes\ndecrypt(data: bytes) -> bytes\n→ Encrypt/decrypt bytes data\n\nencrypt_block(block: bytes) -> bytes\ndecrypt_block(block: bytes) -> bytes\n→ single block (16 bytes) encryption/decryption\n```\n## Examples\nThis project includes three example scripts demonstrating different functionalities of the module:  \n\n**​1.[File Cipher](https://github.com/shrimp2845-tw/project_AES/blob/main/examples/file_cipher.py)**: \nA script for encrypting and decrypting files using AES with various operation modes (ECB, CBC, CTR).  \n\n**​2.[Avalanche Observation](https://github.com/shrimp2845-tw/project_AES/blob/main/examples/avalanche_observation.py)**: A script to observe the avalanche effect by testing how bit-flips in plaintext affect the ciphertext under different configurations.\n\n**3.[Differential](https://github.com/shrimp2845-tw/project_AES/blob/main/examples/differential.py)**: A script constructs Difference Distribution Tables (DDT) to analyze the cryptographic strength of the S-Box (both standard and user defined).\n\n### Samples\n**1.File Cipher**:\n\nYou can try to decrypt [these examples](https://github.com/shrimp2845-tw/project_AES/tree/main/examples/test_files) by your self\n \n- hina.png -> encrypt(key=gehenna, mode=ECB) -> hina.bin\n\n- kayoko.jpg -> encrypt(key=cat, mode=CBC) -> kayoko.bin\n\n- r18.gif -> encrypt(key=give you up, mode=CTR) -> r18.bin\n\n(I originally wanted to use a picture of Shiina Mahiru, but I couldn’t find any good images under a cc license QAQ)\n\n**2.Avalanche Observation**:\n\n![Alt-text](https://raw.githubusercontent.com/shrimp2845-tw/project_AES/main/examples/test_files/avalanche_observation.png)\n\n## Disclaimer\n\nThis implementation is intended for **analysis and educational purposes only**.  \nIt does **not guarantee cryptographic security** or **production-level performance efficiency**.  \n\nDo not use this project in any environment that requires strong security assurances.\n\n## License\n\n**Source code**: MIT License\n\n**Example assets**:\n  Some materials under [/examples/test_files](https://github.com/shrimp2845-tw/project_AES/tree/main/examples/test_files) are used for demonstration purposes only and remain under their original license:\n  \n© SeriBaKa (https://www.deviantart.com/seribaka/art/Blue-archive-sorasaki-hina-905973822)\n\n© らんどう(https://www.pixiv.net/artworks/116363500)\n\nThanks to the original creators 🤎\n\n",
     "readme_error": ""
   },
   "shrimp2845-tw/project_DES": {
-    "updated_at": 1784853446434,
+    "updated_at": 1785983465786,
     "full_name": "shrimp2845-tw/project_DES",
     "name": "project_DES",
     "description": "This is an educational Python implementation of the Data Encryption Standard (DES)",
     "html_url": "https://github.com/shrimp2845-tw/project_DES",
     "language": "Python",
-    "stargazers_count": 5,
+    "stargazers_count": 4,
     "readme_html": "",
     "readme_markdown": "**_Warning: This implementation is intended for self learning purposes only and should not be used for real-world security._**\n\n## About\n\n- **Author:** shrimp2845  \n- **Version:** 0.1.1  \n- **License:** MIT\n\nThis is an educational Python implementation of the Data Encryption Standard (DES). This project breaks down the complex Feistel network into human-readable modules following the official NIST specifications, and supports ECB and CBC modes for real file encryption.\n\n## Installation & Usage\n\n### install\nRequires Python 3.10+\n```bash\npip install project-des\n```\n### usage\n```bash\npython -c \"from project_DES import DES; cipher = DES(b'12345678'); print(cipher.encrypt(b'data').hex())\"\n```\n\n## Docs\n\n```\nclass initialize\n----------------------\nproject_DES.DES(key, mode='ECB')\n\nkey \n-> 8 bytes or key file name \ncontaining an encryption key,\nif key is str, it extract \nfirst 8 bytes in the file\n\nmode\n-> optional, block cipher mode of \noperation that used,ECB and CBC \navailable in current version\n\n\nmethods\n----------------------\n\nencrypt(data: bytes) -> bytes, \ndecrypt(data: bytes) -> bytes\n-> return encrypt/decrypt bytes data\n\nencrypt_file(name: str, new_name: str), \ndecrypt_file(name: str, new_name: str) \n-> encrypt/decrypt target file 'name' \nand save it as 'new_name'\n\nget_key(), get_mode()\n-> get current using key/mode of \noperation\n\nchange_key(key: str or bytes),\nchange_mode(mode: str)\n-> change current using key/mode of \noperation\n\n```\n\n## Examples\nProject provides two examples: [string_cipher.py](https://github.com/shrimp2845-tw/project_DES/blob/main/examples/string_cipher.py) & [file_cipher.py](https://github.com/shrimp2845-tw/project_DES/blob/main/examples/file_cipher.py)\n\nyou can find samples of [file_cipher.py](https://github.com/shrimp2845-tw/project_DES/blob/main/examples/file_cipher.py) at:\n[ecb_sample](https://github.com/shrimp2845-tw/project_DES/tree/main/examples/ecb_sample) & [cbc_sample](https://github.com/shrimp2845-tw/project_DES/tree/main/examples/cbc_sample)\n\n### explanation for samples\n**mumei.jpg**: plaintext file\n\n**mumei.bin**: encrypt mumei.jpg with key ‘berries’ and mode ECB\n\n**mumei_correct_decrypt**.jpg: decrypt mumei.bin with key ‘berries’ and mode ECB\n\n**mumei_wrong_decrypt.jpg**: decrypt  mumei.bin with key ‘friend’ and mode ECB\n\n**ina.jpg**: plaintext file \n\n**ina.bin**: encrypt ina.jpg with key ‘takodachi’ and mode CBC\n\n**ina_correct_decrypt.jpg**: decrypt ina.bin with key ‘takodachi’ and mode CBC\n\n**ina_wrong_decrypt.jpg**: decrypt ina.bin with key ‘violet’ and mode CBC\n\n\n## Performance \nThis project is designed for learning and understanding how DES works  rather than for practical encryption use. The implementation prioritizes readability and modular structure over performance.\n\nAs a result, encryption process is **very slow**. It takes nearly 2 minutes to encrypt 1MB file.\n\n\n\n\n",
     "readme_error": ""
   },
   "shrimp2845-tw/Musics2Video": {
-    "updated_at": 1784853446434,
+    "updated_at": 1785983465786,
     "full_name": "shrimp2845-tw/Musics2Video",
     "name": "Musics2Video",
     "description": "A Python cli tool for generating your own music playlist video",
@@ -36,7 +36,7 @@
     "readme_error": ""
   },
   "shrimp2845-tw/nhdl": {
-    "updated_at": 1784853446434,
+    "updated_at": 1785983465786,
     "full_name": "shrimp2845-tw/nhdl",
     "name": "nhdl",
     "description": "A lightweight Python tool for downloading galleries from nhentai and converting them into PDF files",
