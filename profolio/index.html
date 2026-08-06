@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <title>Profolio | shrimp2845 の blog</title>
+    <meta name="author" content="shrimp2845" />
+    <meta name="description" content="shrimp2845 の blog" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/user_images/avatar.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+<script src="https://s4.zstatic.net/ajax/libs/marked/12.0.1/marked.min.js"></script>
+<script src="/js/lib/profolio.js?v=5"></script>
+
+<link rel="stylesheet" href="/css/main.css?v=2" />
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>loading...</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>SHRIMP2845 の BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/friends">
+            <i class="fa-solid fa-user-group fa-fw"></i>
+            <span>&ensp;Friends</span>
+        </a>
+        
+        <a href="/profolio">
+            <i class="fa-solid fa-folder-open fa-fw"></i>
+            <span>&ensp;Profolio</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;SHRIMP2845 の BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/friends">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-user-group fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Friends</div>
+                    </div>
+                </a>
+                
+                <a href="/profolio">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-folder-open fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Profolio</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            
+<div id="profolio" class="article" data-projects="[{&quot;full_name&quot;:&quot;shrimp2845-tw/project_AES&quot;,&quot;name&quot;:&quot;project_AES&quot;,&quot;description&quot;:&quot;A modular Python implementation of AES featuring customizable transformations and comprehensive JSON dataflow logging for cryptographic analysis&quot;,&quot;html_url&quot;:&quot;https://github.com/shrimp2845-tw/project_AES&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;stargazers_count&quot;:9,&quot;readme_html&quot;:&quot;&quot;,&quot;readme_markdown&quot;:&quot;**_Warning: This implementation is intended for analysis and educational purpose and should not be used for real-world security._**\n\n## About\n- **Author:** shrimp2845  \n- **Version:** 0.5.0\n- **License:** MIT\n\nA pure Python implementation of the Advanced Encryption Standard (AES) algorithm with support for multiple key sizes, configurable internal transformations, detailed logging, and multiple cipher modes of operation.\n\n## Features\n- AES-128/AES-192/AES-256 support\n- ECB/CBC/CTR modes\n- PKCS#7 padding\n- Custom AES transformation configuration\n- Custom S-Box support\n- Encryption/decryption logging\n\n## Project Structure\n```\n\nproject_AES/\n  ├── __init__.py\n  ├── block_utils.py\n  ├── configs.py\n  ├── project_AES.py\n  └── aes_core/\n      ├── __init__.py\n      ├── cipher.py\n      ├── core_utils.py\n      ├── key_expansion.py\n      ├── math_utils.py\n      └── round.py\n\n```\n\n## Installation\nRequires Python 3.10+\n```bash\npip install project-aes\n```\nor \n\n```bash\npip install tqdm\ngit clone https://github.com/shrimp2845-tw/project_AES.git\ncd project_AES\n```\n\n## Quick Start\n```python\nfrom project_AES import AES\nkey = b\&quot;0123456789abcdef\&quot;\nplaintext = b\&quot;hello world\&quot;\ncipher = AES(key)\nciphertext = cipher.encrypt(plaintext)\nprint(ciphertext)\n```\n\n## Docs\n```\nclass initialize\n----------------------\nfrom project_AES import AES\naes = AES(key, mode='ECB', config=None)\n\nkey -> bytes (16, 24 or 32 bytes)\nRequired. AES key for 128/192/256-bit encryption.\nmode -> str (optional)\nBlock cipher mode of operation.\nSupported: 'ECB', 'CBC', 'CTR'\nDefault: 'ECB'\nconfig -> AESConfig (optional)\nAdvanced configuration. Default is AESConfig()\n\n\nmethods\n----------------------\nencrypt(data: bytes) -> bytes\ndecrypt(data: bytes) -> bytes\n→ Encrypt/decrypt bytes data\n\nencrypt_block(block: bytes) -> bytes\ndecrypt_block(block: bytes) -> bytes\n→ single block (16 bytes) encryption/decryption\n```\n## Examples\nThis project includes three example scripts demonstrating different functionalities of the module:  \n\n**​1.[File Cipher](https://github.com/shrimp2845-tw/project_AES/blob/main/examples/file_cipher.py)**: \nA script for encrypting and decrypting files using AES with various operation modes (ECB, CBC, CTR).  \n\n**​2.[Avalanche Observation](https://github.com/shrimp2845-tw/project_AES/blob/main/examples/avalanche_observation.py)**: A script to observe the avalanche effect by testing how bit-flips in plaintext affect the ciphertext under different configurations.\n\n**3.[Differential](https://github.com/shrimp2845-tw/project_AES/blob/main/examples/differential.py)**: A script constructs Difference Distribution Tables (DDT) to analyze the cryptographic strength of the S-Box (both standard and user defined).\n\n### Samples\n**1.File Cipher**:\n\nYou can try to decrypt [these examples](https://github.com/shrimp2845-tw/project_AES/tree/main/examples/test_files) by your self\n \n- hina.png -> encrypt(key=gehenna, mode=ECB) -> hina.bin\n\n- kayoko.jpg -> encrypt(key=cat, mode=CBC) -> kayoko.bin\n\n- r18.gif -> encrypt(key=give you up, mode=CTR) -> r18.bin\n\n(I originally wanted to use a picture of Shiina Mahiru, but I couldn’t find any good images under a cc license QAQ)\n\n**2.Avalanche Observation**:\n\n![Alt-text](https://raw.githubusercontent.com/shrimp2845-tw/project_AES/main/examples/test_files/avalanche_observation.png)\n\n## Disclaimer\n\nThis implementation is intended for **analysis and educational purposes only**.  \nIt does **not guarantee cryptographic security** or **production-level performance efficiency**.  \n\nDo not use this project in any environment that requires strong security assurances.\n\n## License\n\n**Source code**: MIT License\n\n**Example assets**:\n  Some materials under [/examples/test_files](https://github.com/shrimp2845-tw/project_AES/tree/main/examples/test_files) are used for demonstration purposes only and remain under their original license:\n  \n© SeriBaKa (https://www.deviantart.com/seribaka/art/Blue-archive-sorasaki-hina-905973822)\n\n© らんどう(https://www.pixiv.net/artworks/116363500)\n\nThanks to the original creators 🤎\n\n&quot;,&quot;readme_error&quot;:&quot;This project does not have a README.md.&quot;},{&quot;full_name&quot;:&quot;shrimp2845-tw/project_DES&quot;,&quot;name&quot;:&quot;project_DES&quot;,&quot;description&quot;:&quot;This is an educational Python implementation of the Data Encryption Standard (DES)&quot;,&quot;html_url&quot;:&quot;https://github.com/shrimp2845-tw/project_DES&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;stargazers_count&quot;:4,&quot;readme_html&quot;:&quot;&quot;,&quot;readme_markdown&quot;:&quot;**_Warning: This implementation is intended for self learning purposes only and should not be used for real-world security._**\n\n## About\n\n- **Author:** shrimp2845  \n- **Version:** 0.1.1  \n- **License:** MIT\n\nThis is an educational Python implementation of the Data Encryption Standard (DES). This project breaks down the complex Feistel network into human-readable modules following the official NIST specifications, and supports ECB and CBC modes for real file encryption.\n\n## Installation &amp; Usage\n\n### install\nRequires Python 3.10+\n```bash\npip install project-des\n```\n### usage\n```bash\npython -c \&quot;from project_DES import DES; cipher = DES(b'12345678'); print(cipher.encrypt(b'data').hex())\&quot;\n```\n\n## Docs\n\n```\nclass initialize\n----------------------\nproject_DES.DES(key, mode='ECB')\n\nkey \n-> 8 bytes or key file name \ncontaining an encryption key,\nif key is str, it extract \nfirst 8 bytes in the file\n\nmode\n-> optional, block cipher mode of \noperation that used,ECB and CBC \navailable in current version\n\n\nmethods\n----------------------\n\nencrypt(data: bytes) -> bytes, \ndecrypt(data: bytes) -> bytes\n-> return encrypt/decrypt bytes data\n\nencrypt_file(name: str, new_name: str), \ndecrypt_file(name: str, new_name: str) \n-> encrypt/decrypt target file 'name' \nand save it as 'new_name'\n\nget_key(), get_mode()\n-> get current using key/mode of \noperation\n\nchange_key(key: str or bytes),\nchange_mode(mode: str)\n-> change current using key/mode of \noperation\n\n```\n\n## Examples\nProject provides two examples: [string_cipher.py](https://github.com/shrimp2845-tw/project_DES/blob/main/examples/string_cipher.py) &amp; [file_cipher.py](https://github.com/shrimp2845-tw/project_DES/blob/main/examples/file_cipher.py)\n\nyou can find samples of [file_cipher.py](https://github.com/shrimp2845-tw/project_DES/blob/main/examples/file_cipher.py) at:\n[ecb_sample](https://github.com/shrimp2845-tw/project_DES/tree/main/examples/ecb_sample) &amp; [cbc_sample](https://github.com/shrimp2845-tw/project_DES/tree/main/examples/cbc_sample)\n\n### explanation for samples\n**mumei.jpg**: plaintext file\n\n**mumei.bin**: encrypt mumei.jpg with key ‘berries’ and mode ECB\n\n**mumei_correct_decrypt**.jpg: decrypt mumei.bin with key ‘berries’ and mode ECB\n\n**mumei_wrong_decrypt.jpg**: decrypt  mumei.bin with key ‘friend’ and mode ECB\n\n**ina.jpg**: plaintext file \n\n**ina.bin**: encrypt ina.jpg with key ‘takodachi’ and mode CBC\n\n**ina_correct_decrypt.jpg**: decrypt ina.bin with key ‘takodachi’ and mode CBC\n\n**ina_wrong_decrypt.jpg**: decrypt ina.bin with key ‘violet’ and mode CBC\n\n\n## Performance \nThis project is designed for learning and understanding how DES works  rather than for practical encryption use. The implementation prioritizes readability and modular structure over performance.\n\nAs a result, encryption process is **very slow**. It takes nearly 2 minutes to encrypt 1MB file.\n\n\n\n\n&quot;,&quot;readme_error&quot;:&quot;This project does not have a README.md.&quot;},{&quot;full_name&quot;:&quot;shrimp2845-tw/Musics2Video&quot;,&quot;name&quot;:&quot;Musics2Video&quot;,&quot;description&quot;:&quot;A Python cli tool for generating your own music playlist video&quot;,&quot;html_url&quot;:&quot;https://github.com/shrimp2845-tw/Musics2Video&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;stargazers_count&quot;:6,&quot;readme_html&quot;:&quot;&quot;,&quot;readme_markdown&quot;:&quot;\n## About\n\n- **Author:** shrimp2845  \n- **Version:** 0.2.0\n- **requirement**: Python 3.10+, FFmpeg\n- **License:** MIT\n\n**Musics2Video** is a Python CLI tool for automatically generating music playlist videos. It can fetch music from online sources like YouTube or use your local audio files, combine them with a dynamic playlist display, and render a single video file.\n\n## Features\n\n**Flexible Music Sources:** Create videos from a list of online URLs (`yt-dlp` supported sources) or local audio files.\n\n**Batch Processing:** Use a simple text file to define a mixed playlist of online and local tracks.\n\n**Customizable Visuals:**\nChoose from built-in styles (`classic`,`modern`) or create and use your own custom HTML/CSS templates for a unique look.\n\n**Automatic Metadata:** Automatically fetches song titles and thumbnails from online sources.\n\n**Custom Artwork:** Specify unique cover art for each track in your playlist.\n\n**Configurable Output:** Control video resolution, FPS, audio quality, and output formats.\n\n## Installation\n **FFmpeg**: This tool relies on FFmpeg for video and audio processing. You can download it from the [official FFmpeg website](https://ffmpeg.org/download.html).\n\n **Musics2Video**: Install the package using `pip`.\n\nPython 3.10 ~ 3.12\n```sh\npip install musics2video\n```\nPython 3.13+\n```sh\npip install musics2video\npip install audioop-lts\n```\n\n\n## Usage\n\nThe tool is accessed using `musics2video` command, which has two main  sub-commands: `download` and `list`.\n\n### 1. `download` Command\n\nGenerates a video from a list of online URLs. Audio is downloaded, and titles/thumbnails are fetched automatically.\n\n**Example:**\n```sh\nmusics2video download \&quot;https://www.youtube.com/watch?v=xxxxxx\&quot; \&quot;https://www.youtube.com/watch?v=yyyyyy\&quot; --name \&quot;my_playlist.mp4\&quot; --style modern\n```\n\n### 2. `list` Command\n\nGenerates a video from a text file that specifies a sequence of local and online tracks. This method provides fine-grained control over the playlist content and artwork.\n\n**List File Format:**\nCreate a text file (e.g., `songs.txt`). Each line represents a track and follows this format:\n`source{{NEXT}}path_or_url{{NEXT}}optional_cover_path`\n\n*   `source`: Can be `local` or `download`.\n*   `path_or_url`: A file path for `local` or a URL for `download`.\n*   `optional_cover_path`: An optional path to a local image file to use as the track's cover art.\n\n**Example `songs.txt`:**\n```\ndownload{{NEXT}}https://www.youtube.com/watch?v=xxxxxx\nlocal{{NEXT}}/path/to/my/song.mp3{{NEXT}}/path/to/my/album_art.png\ndownload{{NEXT}}https://www.youtube.com/watch?v=yyyyyy{{NEXT}}/path/to/custom_cover.jpg\nlocal{{NEXT}}/another/path/to/music.wav\n```\n\n**Command:**\n```sh\nmusics2video list songs.txt --name \&quot;my_mixed_playlist.mp4\&quot; --style classic\n```\n\n### Command-line Options\n\nBoth `download` and `list` commands accept the following options to customize the output:\n\n| Option                           | Alias | Description                                                           | Default          |\n|----------------------------------|-------|-----------------------------------------------------------------------|------------------|\n| `--name`                         | `-n`  | The filename for the final output video.                              | `output.mp4`     |\n| `--out-dir`                      | `-o`  | Target output directory path for the final video.                     | `./`             |\n| `--style`                        | `-s`  | Built-in visual style template (`classic`, `modern`).                 | `classic`        |\n| `--custom-tmpl`                  |       | Path to a folder containing a custom `template.html` and `style.css`. | `None`           |\n| `--width`                        |       | Output video resolution width in pixels.                              | `1920`           |\n| `--height`                       |       | Output video resolution height in pixels.                             | `1080`           |\n| `--fps`                          |       | Frames per second for the final video.                                | `10`             |\n| `--yt-cover` / `--no-yt-cover`   |       | Fetch and use thumbnails from online video sources.                   | `--yt-cover`     |\n| `--shorten` / `--no-shorten`     |       | Truncate long track titles to fit the layout.                         | `--shorten`      |\n| `--audio-fmt`                    |       | Target audio format for internal processing.                          | `opus`           |\n| `--audio-q`                      |       | Audio extraction quality (0=best, 9=worst).                           | `0`              |\n| `--video-fmt`                    |       | Output video file container format.                                   | `mp4`            |\n| `--level`                        | `-l`  | Logging level (`DEBUG`, `INFO`, `WARNING`, `ERROR`).                  | `INFO`           |\n| `--keep-temp`/`--no-keep-temp`   |       | whether to remove temporary files or not                              | `--no-keep-temp` |\n\n## Built-in templates display\n\nTwo Built-in templates provided in current version:\n\n### 1.classic\n![classic](https://raw.githubusercontent.com/shrimp2845-tw/Musics2Video/refs/heads/main/images/classic.gif)\n\n### 2.modern\n![modern](https://raw.githubusercontent.com/shrimp2845-tw/Musics2Video/refs/heads/main/images/modern.gif)\n\n(These songs are pretty good! You should take a look at their [official website](https://milpr.com/))\n\n## Custom Templates\n\nIf you don't like buit-in templates, you can provide your own template directory using the `--custom-tmpl` option. The directory must contain:\n\n1.`template.html`: The HTML structure for your video frame.\n\n2.`style.css`: The CSS for styling the frame.\n\n### Template Requirements\n\n **`template.html`**:\n\nIt must contain the `{{SONGS}}` placeholder. `musics2video` will replace this with the generated HTML for the song list.\n\nIt should reference a cover image. The generator places an image named `cover.png` in the rendering directory. You can reference it in your HTML like this: `&lt;img src=\&quot;cover.png\&quot;>`.\n\n**`style.css`**:\n\nThe playlist generated at `{{SONGS}}` will consist of `&lt;div class=\&quot;song\&quot;>...&lt;/div>` elements.\n\nThe currently playing song will have an additional class: `&lt;div class=\&quot;song active\&quot;>...&lt;/div>`. You can use `.song.active` to highlight it.\n\n**Example Custom Template Structure:**\n```\n/my_project\n├── my_template/\n│   ├── template.html\n│   └── style.css\n└── songs.txt\n```\n\n**Command:**\n```sh\nmusics2video list songs.txt --custom-tmpl ./my_template\n```\n\n## Disclaimer \n\nIf you want to redistribute the videos generated by this tool, please **make sure to obtain permission from the original author**. The author of this project takes no responsibility if you run into any issues.\n\n## Note\n\nThis project is maintained by a beginner.  \nAny feedback, suggestions, issues are very welcome!&quot;,&quot;readme_error&quot;:&quot;This project does not have a README.md.&quot;},{&quot;full_name&quot;:&quot;shrimp2845-tw/nhdl&quot;,&quot;name&quot;:&quot;nhdl&quot;,&quot;description&quot;:&quot;A lightweight Python tool for downloading galleries from nhentai and converting them into PDF files&quot;,&quot;html_url&quot;:&quot;https://github.com/shrimp2845-tw/nhdl&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;stargazers_count&quot;:4,&quot;readme_html&quot;:&quot;&quot;,&quot;readme_markdown&quot;:&quot;## About\n\n- **Author:** shrimp2845  \n- **Version:** 0.2.2  \n- **License:** MIT\n\n**nhdl** is a lightweight Python tool for downloading galleries from nhentai and converting them into PDF files.\n\nThis project is designed for learning purposes.(No one is going to believe me though XD)\n\n## Dependencies\n\nThis project uses the following open-source libraries:\n\n- [requests](https://github.com/psf/requests)\n- [tqdm](https://github.com/tqdm/tqdm)\n- [Pillow](https://github.com/python-pillow/Pillow)\n- [reportlab](https://www.reportlab.com/)\n\n## Feature \n- Downloading by gallery ID or URL\n- Progress display using tqdm\n- Converting images into a PDF\n- Optional compression to reduce file size\n\n## Installation &amp; Usage\n\n### Install\nRequires Python 3.8+\n```bash\npip install nhdl\n```\n### Usage\n```bash\npython -c \&quot;from nhdl import download; download('id or url')\&quot;\n```\n\n## Docs\n\n```\nmethods\n----------------------\ndownload(book, compress = False, rest=2.0, retry=3)\nDownload a nhentai doujin from url or id\nbook -> url or id\ncompress -> whether to compress the file\nrest -> optional arg, time interval between downloading two pages\nretry -> optional arg, times to retry if disconnect while downloading a page\n\n```\n\n\n\n\n\n&quot;,&quot;readme_error&quot;:&quot;This project does not have a README.md.&quot;}]">
+    <div class="profolio-head">
+        <h1>Profolio</h1>
+    </div>
+
+    <div class="profolio-status" v-if="profolioLoading">
+        <span class="icon"><i class="fa-solid fa-spinner fa-spin fa-fw"></i></span>
+        Loading GitHub projects...
+    </div>
+    <div class="profolio-status profolio-error" v-else-if="profolioError">
+        <span class="icon"><i class="fa-solid fa-circle-exclamation fa-fw"></i></span>
+        {{ profolioError }}
+    </div>
+    <div class="profolio-status" v-else-if="profolioProjects.length === 0">
+        <span class="icon"><i class="fa-solid fa-folder-open fa-fw"></i></span>
+        Add repositories in <code>/_config.yml</code>.
+    </div>
+
+    <div class="profolio-grid" v-if="profolioProjects.length > 0 && !selectedProfolio">
+        <button
+            v-for="project in profolioProjects"
+            :key="project.full_name"
+            class="profolio-project"
+            type="button"
+            @click="openProfolio(project)"
+        >
+            <span class="profolio-project-title">{{ project.name }}</span>
+            <span class="profolio-project-desc">{{ project.description || "No description on GitHub." }}</span>
+            <span class="profolio-project-meta">
+                <span v-if="project.language">{{ project.language }}</span>
+                <span v-if="project.stargazers_count !== undefined">
+                    <i class="fa-solid fa-star fa-fw"></i>{{ project.stargazers_count }}
+                </span>
+            </span>
+        </button>
+    </div>
+
+    <div class="profolio-detail" v-if="selectedProfolio">
+        <div class="profolio-detail-head">
+            <div>
+                <h2>{{ selectedProfolio.name }}</h2>
+                <p>{{ selectedProfolio.description || "No description on GitHub." }}</p>
+            </div>
+            <div class="profolio-detail-actions">
+                <a :href="selectedProfolio.html_url" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-github fa-fw"></i>
+                    GitHub
+                </a>
+                <a :href="profolioListUrl">
+                    <i class="fa-solid fa-arrow-left fa-fw"></i>
+                    Back
+                </a>
+            </div>
+        </div>
+        <div class="profolio-status" v-if="readmeLoading">
+            <span class="icon"><i class="fa-solid fa-spinner fa-spin fa-fw"></i></span>
+            Loading README...
+        </div>
+        <div class="profolio-status profolio-error" v-else-if="readmeError">
+            <span class="icon"><i class="fa-solid fa-circle-exclamation fa-fw"></i></span>
+            {{ readmeError }}
+        </div>
+        <div class="content profolio-readme" v-else v-html="selectedReadme"></div>
+    </div>
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2026 - 2026 shrimp2845 の blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;shrimp2845
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+</body>
+</html>
