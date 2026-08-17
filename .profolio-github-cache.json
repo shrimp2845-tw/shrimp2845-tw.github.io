@@ -1,6 +1,6 @@
 {
   "shrimp2845-tw/project_AES": {
-    "updated_at": 1785983465786,
+    "updated_at": 1786952385856,
     "full_name": "shrimp2845-tw/project_AES",
     "name": "project_AES",
     "description": "A modular Python implementation of AES featuring customizable transformations and comprehensive JSON dataflow logging for cryptographic analysis",
@@ -12,7 +12,7 @@
     "readme_error": ""
   },
   "shrimp2845-tw/project_DES": {
-    "updated_at": 1785983465786,
+    "updated_at": 1786952385856,
     "full_name": "shrimp2845-tw/project_DES",
     "name": "project_DES",
     "description": "This is an educational Python implementation of the Data Encryption Standard (DES)",
@@ -24,7 +24,7 @@
     "readme_error": ""
   },
   "shrimp2845-tw/Musics2Video": {
-    "updated_at": 1785983465786,
+    "updated_at": 1786952385856,
     "full_name": "shrimp2845-tw/Musics2Video",
     "name": "Musics2Video",
     "description": "A Python cli tool for generating your own music playlist video",
@@ -36,13 +36,13 @@
     "readme_error": ""
   },
   "shrimp2845-tw/nhdl": {
-    "updated_at": 1785983465786,
+    "updated_at": 1786952385856,
     "full_name": "shrimp2845-tw/nhdl",
     "name": "nhdl",
     "description": "A lightweight Python tool for downloading galleries from nhentai and converting them into PDF files",
     "html_url": "https://github.com/shrimp2845-tw/nhdl",
     "language": "Python",
-    "stargazers_count": 4,
+    "stargazers_count": 3,
     "readme_html": "",
     "readme_markdown": "## About\n\n- **Author:** shrimp2845  \n- **Version:** 0.2.2  \n- **License:** MIT\n\n**nhdl** is a lightweight Python tool for downloading galleries from nhentai and converting them into PDF files.\n\nThis project is designed for learning purposes.(No one is going to believe me though XD)\n\n## Dependencies\n\nThis project uses the following open-source libraries:\n\n- [requests](https://github.com/psf/requests)\n- [tqdm](https://github.com/tqdm/tqdm)\n- [Pillow](https://github.com/python-pillow/Pillow)\n- [reportlab](https://www.reportlab.com/)\n\n## Feature \n- Downloading by gallery ID or URL\n- Progress display using tqdm\n- Converting images into a PDF\n- Optional compression to reduce file size\n\n## Installation & Usage\n\n### Install\nRequires Python 3.8+\n```bash\npip install nhdl\n```\n### Usage\n```bash\npython -c \"from nhdl import download; download('id or url')\"\n```\n\n## Docs\n\n```\nmethods\n----------------------\ndownload(book, compress = False, rest=2.0, retry=3)\nDownload a nhentai doujin from url or id\nbook -> url or id\ncompress -> whether to compress the file\nrest -> optional arg, time interval between downloading two pages\nretry -> optional arg, times to retry if disconnect while downloading a page\n\n```\n\n\n\n\n\n",
     "readme_error": ""

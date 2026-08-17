@@ -5,7 +5,13 @@ tags:
 
 <center><h1>oh hi! This is shrimp2845🪶✨</h1></center>
 
+<br />
+<br />
+
 ![avatar](./images/avatar.png)
+
+<br />
+<br />
 
 <center>Taiwanese high schooler and programming enthusiast.</center>
 
