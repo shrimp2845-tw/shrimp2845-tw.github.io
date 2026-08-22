@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <title>Padding Oracle Attack | shrimp2845 の blog</title>
+    <meta name="author" content="shrimp2845" />
+    <meta name="description" content="shrimp2845 の blog" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/user_images/avatar.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=2" />
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>loading...</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>SHRIMP2845 の BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/friends">
+            <i class="fa-solid fa-user-group fa-fw"></i>
+            <span>&ensp;Friends</span>
+        </a>
+        
+        <a href="/profolio">
+            <i class="fa-solid fa-folder-open fa-fw"></i>
+            <span>&ensp;Profolio</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;SHRIMP2845 の BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/friends">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-user-group fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Friends</div>
+                    </div>
+                </a>
+                
+                <a href="/profolio">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-folder-open fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Profolio</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>Padding Oracle Attack</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/6/1
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h2 id="1-Padding-Oracle-Attack？"><a href="#1-Padding-Oracle-Attack？" class="headerlink" title="1.Padding Oracle Attack？"></a>1.Padding Oracle Attack？</h2><p>填充預言機攻擊 (Padding Oracle Attack)，是一種針對CBC模式下的塊加密算法的側信道攻擊方法，攻擊者能在<strong>完全不知道密鑰</strong>的情況下，利用解密時移除padding所導致的錯誤訊息、徵兆，一個byte一個byte的還原出原始信息。</p>
+<h2 id="2-填充"><a href="#2-填充" class="headerlink" title="2.填充"></a>2.填充</h2><p>填充 (padding)，指的是將明文填充成一個固定長度，由於區塊加密的明文輸入是固定大小，但明文的大小是多少都有可能，這裡用PKCS#7當作範例：</p>
+<p>每個填充字節的值是用於填充的字節數，即是說，若需要填充 N 個字節，則每個填充字節值都是 N 。 填充的字節數取決於算法可以處理的最小數據塊的字節數量</p>
+<pre><code>01
+02 02
+03 03 03
+04 04 04 04
+05 05 05 05 05
+etc.
+</code></pre>
+<p>範例如下：Block 大小為 8 Byte，需要填充 4 Byte（以十六進位表示）</p>
+<pre><code>DD DD DD DD 04 04 04 04 
+</code></pre>
+<p>這樣只要看資料末尾就知道要移除幾byte了，那如果最後發現要移除的那些byte跟最後一個byte不一樣，移除時就會觸發例外情況，大部分的加密庫會回報錯誤。 (如<code>pycryptodome</code>會raise ValueError)</p>
+<h2 id="3-原理"><a href="#3-原理" class="headerlink" title="3.原理"></a>3.原理</h2><h3 id="1-條件"><a href="#1-條件" class="headerlink" title="1.條件"></a>1.條件</h3><p>這種攻擊需要兩個條件：</p>
+<ul>
+<li>1.已知用<code>k</code>作為密鑰的CBC塊加密的密文以及其<code>IV</code></li>
+<li>2.一個能告訴你如果任何輸入合法的<code>IV</code>和<code>ciphertext</code>在用<code>k</code>解密後其填充是否合法的機器 (oracle)</li>
+</ul>
+<p>這聽起來很不現實，攻擊者甚至在全程不知道密鑰的情況，就能還原出密文。</p>
+<h3 id="2-構造合法密文"><a href="#2-構造合法密文" class="headerlink" title="2.構造合法密文"></a>2.構造合法密文</h3><p>這裡示範用AES-CBC (每個block 16 bytes)<br>還原的過程是一塊一塊進行，假如要破解<code>Ci</code>這個block，我們先構造一個任意16bytes的資料<code>R = r1 r2 r3 ...... r16</code><br>，然後問oracle： <code>iv = R</code>, <code>ciphertext = Ci</code>的填充是否合法，如果合法就進入下一步，如果不合法就替換<code>R</code>的最後一個byte, 因為<code>P = D(Ci)⊕R </code>，而如果將<code>R</code>的最後一個byte的256種可能都嘗試過後表示<code>P</code>也是256種都試過了(只要最後一個byte是01就包準可以），所以一定存在填充合法的<code>R</code>。</p>
+<h3 id="3-檢查填充長度"><a href="#3-檢查填充長度" class="headerlink" title="3.檢查填充長度"></a>3.檢查填充長度</h3><p>已知<code>P = D(Ci)⊕R</code>的填充合法，那就表示<code>P</code><br>一定是像：</p>
+<pre><code>DD DD ........ DD DD 01
+DD DD ........ DD 02 02
+DD DD ........ 03 03 03
+</code></pre>
+<p>的這種格式，那要怎麼確定是哪一種呢？</p>
+<p>我們知道只要對<code>R</code>的byte做XOR, <code>P</code>也會發生一樣的事情，因此假設<code>P = p1 p2 p3 ...... 03 03 03</code>，<code>R = r1 r2 r3 ...... r16</code>:</p>
+<ul>
+<li><code>iv = R</code>, <code>ciphertext = Ci</code>  oracle會回傳合法填充</li>
+<li>接著修改<code>r1&#39; = r1⊕01</code> </li>
+<li>那<code>P = p1&#39; p2 p3 ...... 03 03 03</code></li>
+<li><code>iv = R&#39;</code>, <code>ciphertext = Ci</code>  oracle會回傳合法填充所以繼續修改<code>r2</code></li>
+<li>如果還是回傳合法就以此類推繼續修改<code>r3</code></li>
+<li>直到<code>r14&#39; = r14⊕01</code></li>
+<li>那<code>P = p1&#39; p2&#39; p3&#39; ...... 02 03 03</code></li>
+<li><code>iv = R&#39;</code>, <code>ciphertext = Ci</code>  oracle就會變成回傳不合法填充</li>
+</ul>
+<p>因為修改了倒數第三位導致填充不合法，所以填充長度為三，且最後3個bytes都是<code>03</code></p>
+<h3 id="4-獲得部分原文和擴展"><a href="#4-獲得部分原文和擴展" class="headerlink" title="4.獲得部分原文和擴展"></a>4.獲得部分原文和擴展</h3><p>其實這時我們已經還原出padding部分的密文了，用剛剛的例子<code>P = p1 p2 p3 ...... 03 03 03</code>，<code>R = r1 r2 r3 ...... r16</code>：</p>
+<p>由於已知<code>P = D(Ci)⊕R</code>的最後三byte都是<code>03</code>而我們真的想知道的明文是<code>Pi = D(Ci) ⊕ Ci-1</code> (如果<code>i = 1</code>, <code>Ci-1 = iv</code>)，而XOR滿足交換率：</p>
+<p><code>P⊕R = D(Ci)</code>，所以<code>Pi = P⊕R⊕Ci-1</code>，<br>又<code>Pi</code>的末三位都是<code>03</code>，因此<code>Pi[-3:] = (03 03 03)⊕R[-3:]⊕Ci-1[-3:]</code>就是<code>Pi</code>的末3bytes。</p>
+<p>那既然如此我們只要把<code>P</code>變成<code>10 10 10 ...... 10 10 10</code>就能獲得<code>Pi</code>的末16bytes，也就是我們朝思暮想的明文了。</p>
+<p>一樣用剛剛的例子<code>P = p1 p2 p3 ...... 03 03 03</code>，<code>R = r1 r2 r3 ...... r16</code>，而且這次我們已經知道<code>P</code>的末3bytes是<code>03 03 03</code>了，那如果我們只需要對<code>r14, r15, r16</code>進行<code>ri&#39; = ri ⊕ 03 ⊕ 04</code>，那<code>p14&#39; ,p15&#39;, p16&#39; = 04, 04, 04</code>，再來就對<code>r13</code>一樣嘗試每一種可能直到<code>p13 = 04</code>時再把<code>p13, p14, p15, p16</code>用剛剛提到的方法變成<code>05 05 05 05</code>，就可以反覆執行下去直到<code>P</code>變成<code>10 10 10 ...... 10 10 10</code>，再用<code>Pi = (10, 10, 10 ...... 10, 10, 10) ⊕ R ⊕ Ci-1</code>，就大功告成啦！</p>
+<h2 id="4-python-implement"><a href="#4-python-implement" class="headerlink" title="4.python implement"></a>4.python implement</h2><pre><code class="python">import os
+import random
+from project_AES import AES
+from project_AES.configs import AESConfig
+from project_AES import block_utils
+
+class Vulnerable_AES:
+   def __init__(self, secret = os.urandom(random.randint(30, 150)).hex()):
+       self.__secret = secret
+       self.__cipher = AES(os.urandom(16), mode=&#39;cbc&#39;)
+
+   def get_encrypted_secret(self):
+       return self.__cipher.encrypt(bytes.fromhex(self.__secret)).hex()
+
+   def check_your_secret(self, ct: str):
+       try:
+           if self.__cipher.decrypt(bytes.fromhex(ct)).hex() == self.__secret:
+               return &#39;ohhi!&#39;
+           else:
+               return &#39;ohhi?&#39;
+       except Exception as e:
+           return f&#39;error : {e}&#39;
+
+   def check_raw(self, raw):
+       if raw == self.__secret:
+           print(&#39;how is this possible!!! QAQ&#39;)
+       else:
+           print(&#39;awa why so weak&#39;)
+
+def xor(b1: bytes, b2: bytes) -&gt; bytes:
+   return bytes(i ^ j for i, j in zip(b1, b2))
+
+def get_info(s):
+   res = []
+   for i in range(len(s) // 32):
+       res.append(s[i*32: i*32+32])
+   return res
+
+def find_valid_padding(r, c, idx):
+   c = bytes.fromhex(c)
+   if target.check_your_secret((r+c).hex()) == &#39;error : remove_padding: invalid padding&#39; and idx != 0:
+       print(&#39;error&#39;)
+       raise
+   if idx != 0:
+       nr = r[:16-idx]+xor(xor(r[16-idx:], (idx.to_bytes())*idx), ((idx+1).to_bytes())*idx)
+   else:
+       nr = r
+   for i in range(256):
+       nb = xor(nr, i.to_bytes().rjust(16-idx, b&#39;\x00&#39;) + (b&#39;\x00&#39; * idx))
+       if target.check_your_secret((nb+c).hex()) != &#39;error : remove_padding: invalid padding&#39;:
+           return nb
+   return &#39;done&#39;
+
+def check_padding_len(r, c):
+   c = bytes.fromhex(c)
+   if target.check_your_secret((r+c).hex()) == &#39;error : remove_padding: invalid padding&#39;:
+       return 0
+   for i in range(16):
+       nr = r[:i] + xor((1).to_bytes(), r[i].to_bytes()) + r[i+1:]
+       if target.check_your_secret((nr+c).hex()) == &#39;error : remove_padding: invalid padding&#39;:
+           return 16 - i
+   return &#39;done&#39;
+
+def attack_block(block, iv):
+   idx = 0
+   n = bytes.fromhex(&#39;0&#39;*32)
+   while True:
+       n = find_valid_padding(n, block, idx)
+       print(f&#39;round1:{idx}&#39;, n.hex())
+       if idx == 15:
+           re = xor(n, b&#39;\x10&#39; * 16).hex()
+           print(&quot;result =&quot;, xor(bytes.fromhex(re), bytes.fromhex(iv)).hex())
+           return xor(bytes.fromhex(re), bytes.fromhex(iv)).hex()
+       if idx == 0:
+           idx = check_padding_len(n, block)
+       else:
+           idx += 1
+       
+
+secret = &quot;&quot;&quot;it&#39;s a long way forward, trust in me
+I&#39;ll give them shelter, like you&#39;ve done for me
+And I know, I&#39;m not alone, you&#39;ll be watching over us
+Until......&quot;&quot;&quot;
+target = Vulnerable_AES(secret = secret.encode().hex())
+
+def main():
+   print(target.check_your_secret(target.get_encrypted_secret()))
+   blocks = get_info(target.get_encrypted_secret())
+   iv, blocks = blocks[0], blocks[1:]
+   print(&#39;iv:&#39;, iv)
+   v = iv
+   plaintext = []
+   for j, i in enumerate(blocks):
+       print(f&#39;-----------------------block {j+1}-----------------------&#39;)
+       plaintext.append(attack_block(i, v))
+       v = i
+   pl = block_utils.remove_padding(bytes.fromhex(&#39;&#39;.join(plaintext)))
+   print(&#39;ans: &#39;, pl.decode())
+   print(&#39;check:&#39;)
+   target.check_raw(pl.hex())
+   
+if __name__ == &#39;__main__&#39;:
+   main()
+</code></pre>
+<p><em><strong>( 註：這串程式是我從凌晨一點寫到早上六點作品，因此請多多包涵這串屎山)</strong></em></p>
+<h3 id="1-VulnerableAES"><a href="#1-VulnerableAES" class="headerlink" title="1.VulnerableAES()"></a>1.VulnerableAES()</h3><p>模擬一個真實世界中具有漏洞的 Web API 或服務。</p>
+<p> <code>get_encrypted_secret()</code>： 回傳加密後的密文。</p>
+<p> <code>check_your_secret(ct)</code>：<br> 這是整個攻擊的oracle。當我們傳入構造的密文時，它會進行解密。如果填充錯誤，會拋出錯誤訊息。</p>
+<h3 id="2-攻擊函數​"><a href="#2-攻擊函數​" class="headerlink" title="2.攻擊函數​"></a>2.攻擊函數​</h3><p><code>check_padding_len(r, c)</code>：</p>
+<p>確認當前的填充長度，​當我們構造出一個合法的 <code>R</code> 讓解密成功時，去探測此時的明文末尾到底是 <code>01</code>、<code>02 02</code>還是 <code>03 03 03</code>。</p>
+<p><code>find_valid_padding(r, c, idx)</code>：</p>
+<p>這個函數負責動態調整 <code>R</code></p>
+<p>已知前一個狀態的填充長度為 <code>idx</code>  (例如末尾已經是 <code>01</code>)，為了猜測前一個 byte，把末尾調整為期待的下一個填充值(例如 <code>02 02</code>)。<br>接著，程式針對未知的第 16 - idx 個位置，從 0 到 255 進行爆破，直到oracle不報錯為止。</p>
+<p><code>attack_block(block, iv)</code>：</p>
+<p>這個函數負責對單個密文區塊進行破解。</p>
+<p>​重複執行<code>find_valid_padding</code>調整<code>R</code>和<code>idx+=1</code>調整爆破的byte (如果在round 0, idx有很低的機率直接跳到2或更高，所以要呼叫<code>check_padding_len</code>)，直到爆破出<code>P = D(Ci)⊕R = (10 10 10 ...... 10 10 10)</code>為止並回傳<code>Pi = (10, 10, 10 ...... 10, 10, 10) ⊕ R ⊕ Ci-1</code>也就是這個block的明文。</p>
+<h3 id="3-main"><a href="#3-main" class="headerlink" title="3.main()"></a>3.main()</h3><p>對每個block調用<code>attack_block(block, iv)</code>，拼接原文後移除正常應有的填充，並且向<code>VulnerableAES()</code>驗證攻擊是否成功。</p>
+<h2 id="5-現代世界如何防範"><a href="#5-現代世界如何防範" class="headerlink" title="5.現代世界如何防範"></a>5.現代世界如何防範</h2><p>其實現實世界也有發生過數起這種類型的漏洞：</p>
+<ul>
+<li><ol>
+<li>微軟 ASP.NET 視圖狀態洩漏 (CVE-2010-3332 &#x2F; MS10-070)</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Apache Shiro 記憶體偽造 (CVE-2019-12422 &#x2F; Shiro-721)</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>POODLE 攻擊 (CVE-2014-3566)</li>
+</ol>
+</li>
+</ul>
+<p>這些資安漏洞雖然都不只用到填充攻擊，但其都是攻擊鏈中重要的一環 (別叫我解釋，我是真看不懂QwQ)</p>
+<p>現在解決這個問題主流的防法是放棄CBC，或者使用MAC驗證信息完整性。</p>
+<p>切記，<strong>加密不是驗證</strong>，傳統的CBC無法驗證信息是否被修改，現在AES加密更常使用GCM模式 (用ghash進行驗證的CTR模式)，<br>這種帶驗證的模式能檢測出密文是否被竄改，進直接暫停解密，讓攻擊者難以獲取需要的信息，如果執意要用CBC也會加上HMAC，一樣能在解密前驗證信息完整性。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2026 - 2026 shrimp2845 の blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;shrimp2845
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
