@@ -111,3 +111,21 @@ Developer
 <br />
 <br />
 
+<center>
+<h2>
+
+[yuyoru](https://theoyu314159.github.io/)
+
+<h2>
+</center>
+
+![avatar](./images/friend7.png)
+
+<center>
+
+一個喜歡寫程式的半宅男
+
+</center>
+<br />
+<br />
+
