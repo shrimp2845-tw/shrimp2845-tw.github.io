@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <title>APCS 2026/3 | shrimp2845 の blog</title>
+    <meta name="author" content="shrimp2845" />
+    <meta name="description" content="shrimp2845 の blog" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/user_images/avatar.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=2" />
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>loading...</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>SHRIMP2845 の BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/friends">
+            <i class="fa-solid fa-user-group fa-fw"></i>
+            <span>&ensp;Friends</span>
+        </a>
+        
+        <a href="/profolio">
+            <i class="fa-solid fa-folder-open fa-fw"></i>
+            <span>&ensp;Profolio</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;SHRIMP2845 の BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/friends">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-user-group fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Friends</div>
+                    </div>
+                </a>
+                
+                <a href="/profolio">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-folder-open fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Profolio</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>APCS 2026/3</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/6/2
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p><em><strong>註： 本人不是什麼佬，以下內容有可能有誤，請多包涵</strong></em></p>
+<h2 id="1-比例分割"><a href="#1-比例分割" class="headerlink" title="1.比例分割"></a>1.比例分割</h2><p><a target="_blank" rel="noopener" href="https://zerojudge.tw/ShowProblem?problemid=s179">題目：</a><br><img src="/./images/2026_3_q1.png" alt="q1"></p>
+<p>其實這題就是fancy一點的二分搜罷了，應該算送分？</p>
+<p>解答：</p>
+<pre><code class="python">from itertools import accumulate
+
+def get_sec(ll, l, r):
+    if l &gt; r:
+        return 0
+    return ll[r]-ll[l-1]
+
+def main():
+    n, m = map(int, input().split())
+    nl = list(map(int, input().split()))
+    il = [map(int, input().split()) for i in range(m)]
+    nl = [0] + list(accumulate(nl))
+    for l, r, a, b in il:
+        t = a/(a+b)
+        u, d = r, l-1
+        while u-d &gt; 1:
+            idx = (u+d)//2
+            nt = get_sec(nl, l, idx) / get_sec(nl, l, r)
+            if nt &gt;= t:
+                u = idx
+            elif nt &lt; t:
+                d = idx
+        print(u)
+main()
+</code></pre>
+<h2 id="2-觀光旅遊"><a href="#2-觀光旅遊" class="headerlink" title="2.觀光旅遊"></a>2.觀光旅遊</h2><p><a target="_blank" rel="noopener" href="https://zerojudge.tw/ShowProblem?problemid=s180">題目：</a><br><img src="/./images/2026_3_q2.png" alt="q2"></p>
+<p>這題就有點難 (我卡很久QwQ)，一開始就有想到用差分陣列的概念紀錄每一個表演開始和結束的日期，但要開一個長度10⁸的list還要做前綴合陣列大概3秒就過去了 (記憶體也會暴斃給你看)，絞盡腦汁才想出這個不知道叫啥的防法，原理是因為原本前綴合list會有大量連續的重複元素，所以改紀錄每個區間開始的index和這個區間內的值，再用二分搜找原本的index屬於哪個區間。</p>
+<p>解答：</p>
+<pre><code class="python">def main():
+    ml = {}
+    n, m = map(int, input().split())
+    tl = list(map(int, input().split()))
+    dl = [map(int, input().split()) for i in range(m)]
+    sp = set()
+    for i, j in dl:
+        if not ml.get(i): ml[i]=0
+        if not ml.get(j+1): ml[j+1]=0
+        ml[i]+=1
+        ml[j+1]-=1
+        sp.add(i)
+        sp.add(j+1)
+    sp.add(0)    
+    ml[0] = 0
+    sl = sorted(list(sp))
+    c = 0
+    for i in sl:
+        ml[i]+=c
+        c = ml[i]
+    total = 0
+    for i in tl:
+        u, d = len(sl), 0
+        ans = None
+        while u-d &gt; 1:     
+            idx = (u+d)//2
+            if sl[idx]&gt;i:
+                u = idx
+            elif sl[idx]&lt;i:
+                d = idx
+            else:
+                ans = idx
+                break
+        if ans is None:
+            total+=ml[sl[d]]
+            continue
+        total+=ml[sl[ans]]
+    print(total)
+main()
+</code></pre>
+<h2 id="3-校運代表隊"><a href="#3-校運代表隊" class="headerlink" title="3.校運代表隊"></a>3.校運代表隊</h2><p><a target="_blank" rel="noopener" href="https://zerojudge.tw/ShowProblem?problemid=s181">題目：</a><br><img src="/./images/2026_3_q3.png" alt="q3"><br>我看到題目時的反應是「這他媽三小」，不過後來發現數字給的不大，說實話就是要你用dfs枚舉，然後剪枝不要剪的太爛都會過 (應該ㄅwww)，後來縫縫補補也算是寫了一個差一點TLE的版本</p>
+<p>答案：</p>
+<pre><code class="python">import sys
+def main():
+    n, m, r, k, t = map(int, input().split())
+    inp = list(map(int, input().split()))
+    cl = [inp[i*r: (i+1)*r] for i in range(m)]
+    idx = 0
+    def dfs(q, p, depth):
+        nonlocal idx, cl, r, k, t 
+        for i in range(r):
+            if cl[depth][i] in p:
+                continue
+            np = p.copy()
+            np.add(cl[depth][i])
+            for j in list(range(i+1, r))+[None]:
+                nnp = np.copy()
+                if j is not None:
+                    if cl[depth][j] in nnp:
+                        continue
+                    nnp.add(cl[depth][j])
+                nq = []
+                nq.append((r*depth)+i+1)
+                if j is not None:
+                    nq.append((r*depth)+j+1)
+                nq = q+nq
+                if len(nq) == k:
+                    idx+=1
+                    if idx == t:
+                        print(&#39; &#39;.join(map(str, nq)))
+                        sys.exit(0)
+                if len(nq) &gt;= k:
+                    continue
+                if depth+1 == len(cl): break
+                dfs(nq, nnp, depth+1)
+        if depth+1 == len(cl): return
+        dfs(q, p, depth+1)
+    dfs([], set(), 0)
+main()
+</code></pre>
+<p>(說實話，寫到後面我都快搞不懂我在寫啥了www</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2026 - 2026 shrimp2845 の blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;shrimp2845
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

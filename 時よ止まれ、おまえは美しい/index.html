@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <title>時よ止まれ、おまえは美しい── | shrimp2845 の blog</title>
+    <meta name="author" content="shrimp2845" />
+    <meta name="description" content="shrimp2845 の blog" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/user_images/avatar.png" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=2" />
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>loading...</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>SHRIMP2845 の BLOG</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/friends">
+            <i class="fa-solid fa-user-group fa-fw"></i>
+            <span>&ensp;Friends</span>
+        </a>
+        
+        <a href="/profolio">
+            <i class="fa-solid fa-folder-open fa-fw"></i>
+            <span>&ensp;Profolio</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;SHRIMP2845 の BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/friends">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-user-group fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Friends</div>
+                    </div>
+                </a>
+                
+                <a href="/profolio">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-folder-open fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Profolio</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>時よ止まれ、おまえは美しい──</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/8/31
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p><em><strong>Warning: 本篇含有暴雷，建議遊玩後食用</strong></em><br><br /><br><br /></p>
+<center><h3> 沈みゆく世界で、君をみつけた。</h3></center>
+
+<p><img src="/./images/atri_cover.jpg"></p>
+<p>ATRI是一款由<code>ANIPLEX.EXE</code>於2020&#x2F;6上架的全年齡向視覺小說遊戲，因為在特價所以我就買了w，本人也只玩過四款galgame (至於另外三款有幾款是全年齡向的，咱就不深究了XD)，但這款是目前玩下來覺得最不錯的，劇情也很感人，<del>アトリ也很可愛</del>，關於AI的倫理議題我也很感興趣，所以決定寫下這篇</p>
+<pre><code class="簡介">這顆星球正在沉沒——
+海平面因不明原因急速上升，海洋吞沒了大部分沿海地區，如今也在不斷蠶食著陸地。
+人類的棲息地被迫收縮，處於巔峰時期的科學技術不斷流失。
+這是逐漸邁向滅亡的平靜時代。
+</code></pre>
+<br />
+<br />
+
+<h3 id="劇情簡述"><a href="#劇情簡述" class="headerlink" title="劇情簡述"></a>劇情簡述</h3><p>(抄<a target="_blank" rel="noopener" href="https://home.gamer.com.tw/artwork.php?sn=4951181">這個的</a>，放過我的文筆吧QAQ)</p>
+<p>故事發生於一個海平面因為不明原因逐年上升，如今大半區域早已沉入海面下的世界。</p>
+<p>一位小時候因為隧道崩塌事故失去了右腳的少年「斑鳩夏生」，某天為了償還外婆的負債，坐著潛水艇回到現今已沉入水下的外婆的倉庫打撈寶藏，沒想到在那裡遇見了一位沉睡在艙內的機器人「亞托莉」。</p>
+<p>而將她救上岸後，夏生原本要將亞托莉賣掉抵債，然而亞托莉自己卻開出了條件：</p>
+<p>「能夠等一陣子再賣掉我嗎？」<br>「嗯…４５天。之後怎麼處置我都沒關係。」<br>「我在休眠之前接受到了主人的命令，想等到完成這份使命為止。」</p>
+<p>就這樣，為了找尋主人最後的命令，人與機器人之間、倒數４５天的故事，開始了——</p>
+<br />
+<br />
+
+<center><h3>畫廊</h3></center>
+<br />
+<br />
+
+<p><img src="/./images/atri9.jpg"></p>
+<center>海底的邂逅</center>
+
+<br />
+
+<p><img src="/./images/atri1.jpg"><br><img src="/./images/atri2.jpg"></p>
+<center>第一個晚上</center>
+
+<br />
+
+<p><img src="/./images/atri3.jpg"></p>
+<center>呆毛天下第一!</center>
+
+<br />
+
+<p><img src="/./images/atri4.jpg"><br><img src="/./images/atri5.jpg"><br><img src="/./images/atri6.jpg"></p>
+<center>最喜歡這個立繪，超可愛的</center>
+
+<br />
+
+<p><img src="/./images/atri7.jpg"></p>
+<center>hand in hand</center>
+
+<br />
+
+<p><img src="/./images/atri8.jpg"></p>
+<center>就是說阿，夏生先生 (x</center>
+
+<br />
+
+<p><img src="/./images/atri10.jpg"></p>
+<center>約會就是要玩水! (?</center>
+
+<br />
+
+<p><img src="/./images/atri11.jpg"></p>
+<center>夏生=花心大蘿蔔 (noted</center>
+
+<br />
+
+<p><img src="/./images/atri12.jpg"></p>
+<center>……請教會我「喜悅」</center>
+
+<br />
+
+<p><img src="/./images/atri13.jpg"></p>
+<center>看來鳥兒也很喜歡アトリ</center>
+
+<br />
+
+<p><img src="/./images/atri14.jpg"></p>
+<center>(筆記</center>
+
+<br />
+
+<p><img src="/./images/atri15.jpg"><br><img src="/./images/atri16.jpg"><br><img src="/./images/atri17.jpg"></p>
+<center>來不及...莫名的帥 (BE</center>
+
+<br />
+
+<p><img src="/./images/atri18.jpg"><br><img src="/./images/atri19.jpg"><br><img src="/./images/atri20.jpg"><br><img src="/./images/atri21.jpg"><br><img src="/./images/atri22.jpg"><br><img src="/./images/atri23.jpg"><br><img src="/./images/atri24.jpg"><br><img src="/./images/atri25.jpg"><br><img src="/./images/atri26.jpg"><br><img src="/./images/atri27.jpg"><br><img src="/./images/atri28.jpg"><br><img src="/./images/atri29.jpg"></p>
+<center>アトリ的過往，為了拯救被霸凌的主人，卻得不到一句感謝... (HE</center>
+
+<br />
+
+<p><img src="/./images/atri31.jpg"><br><img src="/./images/atri30.jpg"></p>
+<center>哪有什麼問題QAQ (擤鼻</center>
+
+<br />
+
+<p><img src="/./images/atri32.jpg"><br><img src="/./images/atri33.jpg"></p>
+<center>甜...太甜了</center>
+
+<br />
+
+<p><img src="/./images/atri34.jpg"><br><img src="/./images/atri35.jpg"><br><img src="/./images/atri36.jpg"></p>
+<center><del>呆毛</del>傲嬌天下第一 (這段的語音超級讚</center>
+
+<br />
+
+<p><img src="/./images/atri37.jpg"></p>
+<center>很久以前就明白...悲傷為何物</center>
+
+<br />
+
+<p><img src="/./images/atri38.jpg"></p>
+<center>這個呆呆的表情好可愛</center>
+
+<br />
+
+<p><img src="/./images/atri39.jpg"><br><img src="/./images/atri40.jpg"><br><img src="/./images/atri41.jpg"></p>
+<center>犯規啦，犯規! QAQ</center>
+
+<br />
+
+<p><img src="/./images/atri42.jpg"><br><img src="/./images/atri43.jpg"><br><img src="/./images/atri44.jpg"><br><img src="/./images/atri45.jpg"></p>
+<center>再見了，アトリ</center>
+
+<br />
+
+<p><img src="/./images/atri46.jpg"><br><img src="/./images/atri47.jpg"><br><img src="/./images/atri49.jpg"></p>
+<center>遲了一些的最後一天 (TE</center>
+
+<br />
+<br />
+
+<h3 id="結局"><a href="#結局" class="headerlink" title="結局"></a>結局</h3><p>(稍微暴雷下</p>
+<p>有好結局、壞結局、真結局，解完前兩個後就可以解真結局，真結局比較像好結局的後日談就是了</p>
+<p><strong>好結局</strong><br>夏生及時趕到阻止悲劇。事情平息後，夏生在亞托莉預定停止機能前一天，將她帶到人工生態島「伊甸」休眠並成為系統管理員。夏生與眾人一同見證了火箭發射。</p>
+<p><strong>壞結局</strong><br>夏生未能及時阻止亞托莉，導致安田被殺；亞托莉跳樓並失去記憶，幾天後停止機能。</p>
+<p><strong>真結局</strong><br>時間快轉到 60 年後，人類已重啟太空探索並移居浮體都市。此時夏生與青梅竹馬水菜萌結婚，兩人依然牽掛著沉睡中的亞托莉，在夏生生命的尾聲，前往陪伴和亞托莉約好留給未來的最後一天</p>
+<br />
+<br />
+
+<h3 id="延伸討論-你覺得，未來的機器人可能有「心」嗎"><a href="#延伸討論-你覺得，未來的機器人可能有「心」嗎" class="headerlink" title="延伸討論: 你覺得，未來的機器人可能有「心」嗎"></a>延伸討論: 你覺得，未來的機器人可能有「心」嗎</h3><p>本遊戲其中一個我覺得最有趣的部分就是，如果機器人有了意識，有了情緒，那我們應該把它當人類看待嗎?這樣的它們算有心嗎?</p>
+<p>我認為現在的AI還沒做到有「意識」這件事，他終究是遵照人類給的提示詞行事，但如果說，今天他們獲得了能自主思考，並做出行動的能力呢?</p>
+<p>我認為答案是肯定的(btw我在玩這款遊戲之前就這麼想了)，你可能會說，「電路、程式模擬出來的產物，怎麼能算是他們自己的情緒呢?」，可是你我的大腦，說到底也是一個一個的化學、物理反應支撐著思考，我不認為和電腦是什麼有多大差別的東西</p>
+<br />
+<br />
+
+<h3 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h3><p>總而言之言而總之，我自己是很喜歡這款遊戲w，玩的時候也不只落淚一次 (沒想到自己還挺愛哭的w)，未來也會把改編漫畫的全集買下來，アトリ真的很可愛w，推薦在閱讀的你也來玩玩!保證不後悔!</p>
+<br />
+<br />
+
+<pre><code class="Dear_Moments">雨　濡れる　窓   辺で　 口ずさむ　 懐かしい歌
+靠在被細雨淋濕的窗邊　妳輕聲哼唱著那首令人懷念的歌
+幼   いわたしの　空っぽの   胸に
+讓過去那個既幼小　又空無一物的我的心中
+花　  咲いた　  生まれたてのぬくもり
+悄然綻放了一朵花　那是初次成形、帶著稚嫩的掌心微溫
+手 と 手　つないだ帰り 道　  茜　 染まる  渚
+手與手　緊緊相依的歸途上　以及那片被晚霞　染成茜紅色的波光渚岸
+なんでもないひとときが　今では　いとしい瞬     間
+那些平凡無奇的尋常光景　如今都成了我　無可替代、無比珍愛的回憶
+古い　アルバムのかたすみに　 残る　 雫 のあと
+這本早已老舊泛黃的相簿一隅裡　還殘留著　不知是誰流下的斑駁淚痕
+みつけてくれたあなたへ　つたえて　ありがとう　さようなら
+彷彿在向著、將我從徬徨中喚醒的妳　傳達這份心意　謝謝妳　再見了
+書きかけの手 紙に　 夢    見てる　懐かしい日 々
+筆尖停留在未完成的信紙上　思緒早已飛向　那些既溫暖又懷念的過往
+海 の   底で 眠る　      名もないわたしの
+沉睡於寂靜的海底中　連名字都不曾擁有的我的體內
+ただひとつ　芽吹いた無  垢なココロ
+卻有著一顆　因你而復萌的、無垢而純粹的心靈
+手 と 手　つないで眠る夜　キラリ　星  降る  空
+手與手　緊緊相依的入夢夜　以及那片如同瀑布般　傾瀉而出的繁星們
+あなたがくれたぬくもり　この手に　まだ    残ってるよ
+妳所給予我的那份溫暖　時至今日　依然完好地留存在我的掌心之中哦
+遠く　褪せゆく 想い出で　響く　  優しい声
+即便回憶　終將隨時間逐漸斑駁褪色　可妳那溫柔的聲音　依然迴盪著
+きかせてくれたあなたへ　とどけて　ありがとう　さようなら
+彷彿在向著、願意為我哼唱歌曲的妳　傳達這份心意　謝謝妳　再見了
+手 と 手　つないだ帰り 道　  茜　 染まる  渚
+手與手　緊緊相依的歸途上　以及那片被晚霞　染成茜紅色的波光渚岸
+なんでもないひとときが　今では　いとしい瞬     間
+那些平凡無奇的尋常光景　如今都成了我　無可替代、無比珍愛的回憶
+古い　アルバムのかたすみに　 残る　 雫 のあと
+這本早已老舊泛黃的相簿一隅裡　還殘留著　不知是誰流下的斑駁淚痕
+みつけてくれたあなたへ　ありがとう　わたしの　すきなヒト
+彷彿在向著、將我從徬徨中喚醒的你說　謝謝你 最喜歡的人
+もう二  度と　かえらない　いとしい    日々
+以及那些已經　再也無法倒退回去的　你我無可替代、無比珍愛的時光
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2026 - 2026 shrimp2845 の blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;shrimp2845
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
