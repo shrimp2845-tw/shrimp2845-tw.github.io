@@ -64,7 +64,7 @@
     width: 100%;
 }
 #footer #footer-icon {
-    color: #ffa32b;
+    color: #66afef;
     display: inline-block;
     font-size: 18px;
     margin: 0 10px;
@@ -134,14 +134,14 @@
 }
 #home-card #card-div .icon-links a {
     border-radius: 5px;
-    color: #72675c;
+    color: #5c6b72;
     font-size: 18px;
     padding: 5px;
 }
 #home-card #card-div .icon-links a:hover,
 #home-card #card-div .friend-links a:hover,
 #home-posts .page-current .page-num:hover {
-    background: #f4a52e;
+    background: #66afef;
     color: #fff;
 }
 #home-card #card-div .icon-links,
@@ -277,7 +277,7 @@
     margin-left: 25px;
 }
 #home-posts .post .go-post {
-    background: #efa866;
+    background: #66afef;
     border: 0;
     border-radius: 20px 0;
     bottom: -5px;
@@ -308,7 +308,7 @@
     line-height: 1.7;
 }
 #home-posts .post-title {
-    color: #efaa66;
+    color: #66afef;
     text-align: center;
 }
 #home-posts .post:hover {
@@ -353,7 +353,7 @@
 }
 #loading-circle {
     align-items: center;
-    border: 10px solid #fbd2a3;
+    border: 10px solid #a3ddfb;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
@@ -367,7 +367,7 @@
     margin-right: calc(100% - 100vw);
 }
 #menu {
-    background: #facf92;
+    background: #92cafa;
     box-shadow: 0 -1px 10px 0 #9e9e9e4d;
     font-weight: bold;
     line-height: 50px;
@@ -464,7 +464,7 @@
     margin: 0;
     padding: 0;
     position: relative;
-    scrollbar-color: #ffc48a #e6efff;
+    scrollbar-color: #8ab5ff #e6efff;
     scrollbar-width: thin;
     word-wrap: break-word;
 }
@@ -561,7 +561,7 @@ body::-webkit-scrollbar-track {
 }
 .input:focus {
     background: #fff;
-    border-color: #e99c4a;
+    border-color: #66afef;
     box-shadow: 0 0 0 3px #0969da4d;
     outline: none;
 }
@@ -611,7 +611,7 @@ body::-webkit-scrollbar-track {
 .profolio-project.active,
 .profolio-project:hover {
     background: #eef6ff;
-    border-color: #f49938;
+    border-color: #66afef;
     opacity: 1;
 }
 .profolio-error {
@@ -644,7 +644,7 @@ body::-webkit-scrollbar-track {
     width: 100%;
 }
 .profolio-project-title {
-    color: #fe9c1c;
+    color: #51a4ed;
     font-size: 18px;
     font-weight: bold;
 }
@@ -701,7 +701,7 @@ body::-webkit-scrollbar-track {
     white-space: normal !important;
 }
 .language {
-    background: #fac892;
+    background: #92cafa;
     border-radius: 0 0 10px 10px;
     box-shadow: 1px 1px 0.75rem #ed6ea14d;
     color: #fff;
@@ -761,7 +761,7 @@ body::-webkit-scrollbar-track {
     width: 12px;
 }
 ::-webkit-scrollbar-thumb {
-    background: #ffc48a
+    background: #8ab5ff
         linear-gradient(
             45deg,
             #fff6 25%,
@@ -784,7 +784,7 @@ body::-webkit-scrollbar-track {
     color: unset;
 }
 a {
-    color: #efaa66;
+    color: #66afef;
     text-decoration: none;
 }
 a:hover,
